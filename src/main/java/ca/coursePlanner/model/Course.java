@@ -87,4 +87,12 @@ public class Course {
     public void setComponentCode(String componentCode) {
         this.componentCode = componentCode;
     }
+
+
+    @Override
+    public String toString() {
+
+        return " " + semester+" , "+subject+" , "+catalogNumber+" , "+location+" , "+enrolmentCapacity+
+                "  , " +enrolmentTotal+" , "+instructor+" ,"+componentCode;
+    }
 }
