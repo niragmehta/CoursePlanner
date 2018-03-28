@@ -89,11 +89,11 @@ public class CourseCollection implements Comparator<Course> {
         instance.csvCourseList = csvCourseList;
     }
 
-    public List<List<Course>> getCourseOffering() {
+    public List<CourseOffer> getCourseOffering() {
         return courseOffering;
     }
 
-    public void setCourseOffering(List<List<Course>> courseOffering) {
-        instance.courseOffering = courseOffering;
+    public void setCourseOffering(List<CourseOffer> courseOffering) {
+        this.courseOffering = courseOffering;
     }
 }
