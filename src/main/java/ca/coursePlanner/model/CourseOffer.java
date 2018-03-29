@@ -8,6 +8,10 @@ public class CourseOffer {
     private List<Course> courseOffer=new ArrayList<>();
     private String subject="";
     private String catalogNumber="";
+    private int enrollmentCapacity;
+    private int semester;
+    private String location;
+
     private int tutCapacity;
     private int labCapacity;
     private int lectureCapacity;
@@ -20,20 +24,18 @@ public class CourseOffer {
     private int rqlCapacity;
     private int semCapacity;
 
-    public CourseOffer(List<Course> courseOffer, String subject, String catalogNumber, int labCapacity, int lectureCapacity) {
+    public CourseOffer(List<Course> courseOffer, String subject, String catalogNumber,int enrollmentCapacity,int semester,String location) {
         this.courseOffer = courseOffer;
         this.subject = subject;
         this.catalogNumber = catalogNumber;
-        this.labCapacity = labCapacity;
-        this.lectureCapacity = lectureCapacity;
+        this.enrollmentCapacity=enrollmentCapacity;
+        this.semester=semester;
+        this.location=location;
         calculateCapacity();
     }
 
     public void calculateCapacity()
     {
-        labCapacity=0;
-        lectureCapacity=0;
-        tutCapacity=0;
         for(int i=0;i<courseOffer.size();i++)
         {
             if(courseOffer.get(i).getComponentCode().equals("LEC"))
@@ -80,6 +82,8 @@ public class CourseOffer {
             {
                 stlCapacity+=courseOffer.get(i).getEnrolmentCapacity();
             }
+            else if(courseOffer.get(i).getComponentCode().equals("SEM"))
+                semCapacity+=courseOffer.get(i).getEnrolmentCapacity();
 
         }
     }
@@ -129,5 +133,20 @@ public class CourseOffer {
         return courseOffer;
     }
 
+    public int getStlCapacity() {
+        return stlCapacity;
+    }
+
+    public int getPraCapacity() {
+        return praCapacity;
+    }
+
+    public int getRqlCapacity() {
+        return rqlCapacity;
+    }
+
+    public int getSemCapacity() {
+        return semCapacity;
+    }
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public class CourseCollection implements Comparator<Course> {
 
     private List<Course> csvCourseList = new ArrayList<>();
-    private List<CourseOffer> courseOffering = new ArrayList<>();
+    private List<CourseOffer> allCourseOfferings = new ArrayList<>();
 
     private static CourseCollection instance = null;
 
@@ -19,41 +19,52 @@ public class CourseCollection implements Comparator<Course> {
 
     }
 
+    
 
-    public void extractCourses() {
-        Collections.sort(csvCourseList, new CourseCollection());
-        List<Course> temp=new ArrayList<>();
-        String subject="";
-        String catalogNumber="";
-        String location="";
-        int semester=0;
-        int check = 0;
-        for (int i = 0; i < csvCourseList.size(); i++) {
-            if(check==0)
-            {
-                temp=new ArrayList<>();
-                temp.add(csvCourseList.get(i));
-                subject=csvCourseList.get(i).getSubject();
-                catalogNumber=csvCourseList.get(i).getCatalogNumber();
-                location=csvCourseList.get(i).getLocation();
-                semester=csvCourseList.get(i).getSemester();
-                ++check;
-                continue;
-            }
-            if(csvCourseList.get(i).getSubject().equals(subject)
-                    && csvCourseList.get(i).getCatalogNumber().equals(catalogNumber)
-                    && csvCourseList.get(i).getLocation().equals(location)
-                    && Integer.toString(csvCourseList.get(i).getSemester()).equals(Integer.toString(semester)))
-            {
-                temp.add(csvCourseList.get(i));
-            }
-            else
-            {
-
-            }
-
-        }
-    }
+    //populates the list of CourseOffers
+//    public void extractCourses() {
+//        Collections.sort(csvCourseList, new CourseCollection());
+//        List<Course> temp=new ArrayList<>();
+//        String subject="";
+//        String catalogNumber="";
+//        String location="";
+//        int semester=0;
+//        int enrollmentCapacity=0;
+//        int check = 0;
+//
+//        for (int i = 0; i < csvCourseList.size(); i++) {
+//
+//            if(check==0)
+//            {
+//                temp=new ArrayList<>();
+//                temp.add(csvCourseList.get(i));
+//                subject=csvCourseList.get(i).getSubject();
+//                catalogNumber=csvCourseList.get(i).getCatalogNumber();
+//                location=csvCourseList.get(i).getLocation();
+//                semester=csvCourseList.get(i).getSemester();
+//                enrollmentCapacity=csvCourseList.get(i).getEnrolmentCapacity();
+//                ++check;
+//                continue;
+//            }
+//            if(csvCourseList.get(i).getSubject().equals(subject)
+//                    && csvCourseList.get(i).getCatalogNumber().equals(catalogNumber)
+//                    && csvCourseList.get(i).getLocation().equals(location)
+//                    && Integer.toString(csvCourseList.get(i).getSemester()).equals(Integer.toString(semester)))
+//            {
+//                temp.add(csvCourseList.get(i));
+//            }
+//            else
+//            {
+//                CourseOffer courseOffer=new CourseOffer(temp,subject,catalogNumber,enrollmentCapacity,semester,location);
+//                allCourseOfferings.add(courseOffer);
+//                temp=new ArrayList<>();
+//                temp.add(csvCourseList.get(i));
+//                check=0;
+//                continue;
+//            }
+//
+//        }
+//    }
 
 
     @Override
@@ -89,11 +100,11 @@ public class CourseCollection implements Comparator<Course> {
         instance.csvCourseList = csvCourseList;
     }
 
-    public List<CourseOffer> getCourseOffering() {
-        return courseOffering;
+    public List<CourseOffer> getAllCourseOfferings() {
+        return allCourseOfferings;
     }
 
-    public void setCourseOffering(List<CourseOffer> courseOffering) {
-        this.courseOffering = courseOffering;
+    public void setAllCourseOfferings(List<CourseOffer> allCourseOfferings) {
+        this.allCourseOfferings = allCourseOfferings;
     }
 }

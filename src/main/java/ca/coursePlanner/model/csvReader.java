@@ -15,6 +15,7 @@ public class csvReader{
         String cvsSplitBy = ",";
         List<Course> courseList=CourseCollection.getInstance().getCsvCourseList();
 
+        //read the csv file
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
             line=br.readLine();
