@@ -7,9 +7,9 @@ import java.util.List;
 
 public class CSVReader {
 
-    public void read() throws FileNotFoundException {
+    public void read(String path) throws FileNotFoundException {
 
-        String csvFile ="/Users/niragmehta/IdeaProjects/coursePlanner/data/course_data_2016.csv";
+        String csvFile = path;
         String line = "";
         String cvsSplitBy = ",";
 
