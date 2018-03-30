@@ -25,8 +25,19 @@ public class CSVReader {
 
                 // use comma as separator
                 String[] course = line.split(cvsSplitBy);
-                String instructors=course[6]+", ";
-                instructors=instructors.substring(0,instructors.length()-2);
+
+                String instructors="";
+                if(course.length>8)
+                {
+                    for(int i=6;i<course.length-1;i++)
+                    {
+                        instructors+=course[i]+", ";
+                    }
+                }
+
+                //String string = instructors.substring(0,instructors.length()-1);
+
+
                 int size=course.length-1;
                 Course courseTemp=new Course(Integer.parseInt(course[0]),
                         course[1],
@@ -34,7 +45,7 @@ public class CSVReader {
                         course[3],
                         Integer.parseInt(course[4]),
                         Integer.parseInt(course[5]),
-                        course[6],
+                        instructors,
                         course[size]);
 
                 courseList.add(courseTemp);
@@ -43,9 +54,6 @@ public class CSVReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        sortList(courseList,courseCollectionInstance);
-//        courseCollectionInstance.printDebug();
 
         Collections.sort(courseList,new CourseCollection());
         courseCollectionInstance.setCsvCourseList(courseList);

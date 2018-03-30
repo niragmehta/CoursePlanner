@@ -37,8 +37,10 @@ public class CourseOffer {
     {
         PopulateEnrollmentTotal();
         System.out.print("\t"+semester+" in "+location + " by ");
-        for(int i=0;i<instructors.size();i++)
-            System.out.print(instructors.get(i)+", ");
+
+        for (int i = 0; i < instructors.size(); i++)
+            System.out.print(instructors.get(i) + ", ");
+
         System.out.println();
         for(int i=0;i<componentType.size();i++)
         {
@@ -58,9 +60,10 @@ public class CourseOffer {
             if(componentType.contains(courseList.get(i).getComponentCode()))
             {
                 int index=componentType.indexOf(courseList.get(i).getComponentCode());
+
                 int temp=componentCapacity.get(index)+courseList.get(i).getEnrolmentCapacity();
                 componentCapacity.set(index,temp);
-                temp=componentTotal.get(index)+courseList.get(i).getEnrolmentCapacity();
+                temp=componentTotal.get(index)+courseList.get(i).getEnrolmentTotal();
                 componentTotal.set(index,temp);
             }
             else
