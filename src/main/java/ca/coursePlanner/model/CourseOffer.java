@@ -41,11 +41,13 @@ public class CourseOffer {
         System.out.print("\t"+semester+" in "+location + " by ");
         txtWriterInstance.append("\t"+semester+" in "+location + " by ");
 
+
         StringBuilder stringBuilder=new StringBuilder();
         for (int i = 0; i < instructors.size(); i++)
         {
             stringBuilder.append(instructors.get(i)+", ");
         }
+
         stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length()-1,"");
         System.out.print(stringBuilder.toString());
         txtWriterInstance.append(stringBuilder.toString());

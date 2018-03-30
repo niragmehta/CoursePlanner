@@ -44,6 +44,11 @@ public class TxtWriter {
         }
     }
 
+    public String getString()
+    {
+        return stringBuilder.toString();
+    }
+
     public void append(String string){
         stringBuilder.append(string);
     }
