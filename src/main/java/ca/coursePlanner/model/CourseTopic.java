@@ -8,6 +8,8 @@ public class CourseTopic {
     String subject="";
     String catalogNumber="";
     List<CourseOffer> coursesOfferList =new ArrayList<>();
+    TxtWriter txtWriterInstance=TxtWriter.getInstance();
+
 
 
     public CourseTopic(){}
@@ -21,6 +23,8 @@ public class CourseTopic {
     public void displayCourseTopic()
     {
         System.out.print(subject+" "+catalogNumber+"\n");
+        txtWriterInstance.append(subject+" "+catalogNumber+"\n");
+
         for(int i=0;i<coursesOfferList.size();i++)
             coursesOfferList.get(i).displayCourseOffer();
     }

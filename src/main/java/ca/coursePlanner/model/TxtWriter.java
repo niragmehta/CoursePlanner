@@ -7,20 +7,33 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class TxtWriter {
-    public static void write(String content) {
+
+    static TxtWriter instance;
+    private StringBuilder stringBuilder = new StringBuilder();
+    private FileWriter fw;
+    private BufferedWriter bw;
+
+    public static TxtWriter getInstance()
+    {
+        if(instance==null)
+            instance=new TxtWriter();
+        return instance;
+    }
+
+    public void write() {
         try {
 
-            String header  = "Model Dump from 'course_data_2018.csv' file\n";
-
-            File file = new  File("C:/Users/Public/toDelete/dump.txt");
+            String header  = "Model Dump from 'course_data_2018.csv' file\n\n";
+            String content = stringBuilder.toString();
+            File file = new  File("output_dump.txt");
 
             // if file doesnt exists, then create it
             if (!file.exists()) {
                 file.createNewFile();
             }
 
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
+            fw = new FileWriter(file.getAbsoluteFile());
+            bw = new BufferedWriter(fw);
             bw.write(header + content);
             bw.close();
 
@@ -31,4 +44,15 @@ public class TxtWriter {
         }
     }
 
+    public void append(String string){
+        stringBuilder.append(string);
+    }
+
+    public FileWriter getFw() {
+        return fw;
+    }
+
+    public BufferedWriter getBw() {
+        return bw;
+    }
 }

@@ -46,9 +46,6 @@ public class CSVReader {
                     instruc=new StringBuilder("");
                 }
 
-                //String string = instructors.substring(0,instructors.length()-1);
-
-
                 int size=course.length-1;
                 Course courseTemp=new Course(Integer.parseInt(course[0]),
                         course[1],
@@ -68,8 +65,6 @@ public class CSVReader {
 
         Collections.sort(courseList,new CourseCollection());
         courseCollectionInstance.setCsvCourseList(courseList);
-
-
     }
 
     public static void sortList(List<Course> courseList,CourseCollection courseCollectionInstance) throws FileNotFoundException

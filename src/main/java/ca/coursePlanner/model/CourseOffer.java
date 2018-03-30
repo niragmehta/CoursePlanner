@@ -16,6 +16,8 @@ public class CourseOffer {
     List<Integer> componentTotal=new ArrayList<>();
     List<String> instructors=new ArrayList<>();
 
+    TxtWriter txtWriterInstance=TxtWriter.getInstance();
+
     public CourseOffer(String location, int semester,String subject,String catalogNumber) {
         this.location = location;
         this.semester = semester;
@@ -37,6 +39,7 @@ public class CourseOffer {
     {
         PopulateEnrollmentTotal();
         System.out.print("\t"+semester+" in "+location + " by ");
+        txtWriterInstance.append("\t"+semester+" in "+location + " by ");
 
         StringBuilder stringBuilder=new StringBuilder();
         for (int i = 0; i < instructors.size(); i++)
@@ -45,13 +48,18 @@ public class CourseOffer {
         }
         stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length()-1,"");
         System.out.print(stringBuilder.toString());
+        txtWriterInstance.append(stringBuilder.toString());
 
         System.out.println();
+        txtWriterInstance.append("\n");
         for(int i=0;i<componentType.size();i++)
         {
             System.out.println("\t\tTYPE="+componentType.get(i)+", Enrollment= "+componentTotal.get(i)+"/"+componentCapacity.get(i));
+            txtWriterInstance.append("\t\tTYPE="+componentType.get(i)+", Enrollment= "+componentTotal.get(i)+"/"+componentCapacity.get(i)+"\n");
         }
+
         System.out.println();
+        //txtWriterInstance.append("\n");
     }
 
     public void PopulateEnrollmentTotal()

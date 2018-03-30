@@ -24,7 +24,6 @@ public class CourseCollection implements Comparator<Course> {
         for(int i=0;i<topicList.size();i++)
         {
             topicList.get(i).displayCourseTopic();
-            //System.out.println();
         }
     }
 
