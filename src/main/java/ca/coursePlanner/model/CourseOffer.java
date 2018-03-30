@@ -15,7 +15,6 @@ public class CourseOffer {
     List<Integer> componentCapacity=new ArrayList<>();
     List<Integer> componentTotal=new ArrayList<>();
     List<String> instructors=new ArrayList<>();
-    String instrcutorsStr;
 
     public CourseOffer(String location, int semester,String subject,String catalogNumber) {
         this.location = location;
@@ -37,13 +36,15 @@ public class CourseOffer {
     public void displayCourseOffer()
     {
         PopulateEnrollmentTotal();
-        System.out.println("\t"+semester+" in "+location + " by "+instrcutorsStr+"\n");
+        System.out.print("\t"+semester+" in "+location + " by ");
+        for(int i=0;i<instructors.size();i++)
+            System.out.print(instructors.get(i)+", ");
+        System.out.println();
         for(int i=0;i<componentType.size();i++)
         {
             System.out.println("\t\tTYPE="+componentType.get(i)+", Enrollment= "+componentTotal.get(i)+"/"+componentCapacity.get(i));
         }
-
-
+        System.out.println();
     }
 
     public void PopulateEnrollmentTotal()
@@ -52,6 +53,7 @@ public class CourseOffer {
         {
             if(!instructors.contains(courseList.get(i).getInstructor()))
                 instructors.add(courseList.get(i).getInstructor());
+
 
             if(componentType.contains(courseList.get(i).getComponentCode()))
             {
@@ -68,10 +70,6 @@ public class CourseOffer {
                 componentTotal.add(courseList.get(i).getEnrolmentTotal());
             }
         }
-        for(int i=0;i<instructors.size();i++)
-            instrcutorsStr+=", "+instructors.get(i);
-
-        instrcutorsStr.substring(1);
     }
 
 
@@ -94,86 +92,5 @@ public class CourseOffer {
     public String getCatalogNumber() {
         return catalogNumber;
     }
-
-
-    //    private String subject="";
-//    private String catalogNumber="";
-//    private int enrollmentCapacity;
-//    private int semester;
-//    private String location;
-//
-//    private int tutCapacity;
-//    private int labCapacity;
-//    private int lectureCapacity;
-//    private int cnvCapacity;
-//    private int oplCapacity;
-//    private int insCapacity;
-//    private int secCapacity;
-//    private int stlCapacity;
-//    private int praCapacity;
-//    private int rqlCapacity;
-//    private int semCapacity;
-
-//    public CourseOffer( String subject, String catalogNumber,int enrollmentCapacity,int semester,String location) {
-//        this.subject = subject;
-//        this.catalogNumber = catalogNumber;
-//        this.enrollmentCapacity=enrollmentCapacity;
-//        this.semester=semester;
-//        this.location=location;
-//        calculateCapacity();
-//    }
-//    public void calculateCapacity()
-//    {
-//        for(int i=0;i<courseOffer.size();i++)
-//        {
-//            if(courseOffer.get(i).getComponentCode().equals("LEC"))
-//            {
-//                lectureCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("LAB"))
-//            {
-//                labCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("TUT"))
-//            {
-//                tutCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("CNV"))
-//            {
-//                cnvCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("OPL"))
-//            {
-//                oplCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("INS"))
-//            {
-//                insCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("SEC"))
-//            {
-//                secCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("PRA"))
-//            {
-//                praCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("RQL"))
-//            {
-//                rqlCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("SEM"))
-//            {
-//                secCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("STL"))
-//            {
-//                stlCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//            }
-//            else if(courseOffer.get(i).getComponentCode().equals("SEM"))
-//                semCapacity+=courseOffer.get(i).getEnrolmentCapacity();
-//
-//        }
-//    }
 
 }

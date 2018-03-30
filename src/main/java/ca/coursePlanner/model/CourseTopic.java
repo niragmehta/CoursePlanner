@@ -20,7 +20,7 @@ public class CourseTopic {
 
     public void displayCourseTopic()
     {
-        System.out.print(subject+" "+catalogNumber);
+        System.out.print(subject+" "+catalogNumber+"\n");
         for(int i=0;i<coursesOfferList.size();i++)
             coursesOfferList.get(i).displayCourseOffer();
     }

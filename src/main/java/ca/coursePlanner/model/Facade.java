@@ -9,7 +9,7 @@ public class Facade {
 
         csvReader.read();
         courseCollectionInstance.printDebug();
-
+        courseCollectionInstance.displayTopicList();
 
     }
 

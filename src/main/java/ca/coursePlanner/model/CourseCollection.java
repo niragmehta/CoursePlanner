@@ -20,10 +20,11 @@ public class CourseCollection implements Comparator<Course> {
 
     public void displayTopicList()
     {
+        populateTopicList();
         for(int i=0;i<topicList.size();i++)
         {
             topicList.get(i).displayCourseTopic();
-            System.out.println();
+            //System.out.println();
         }
     }
 
