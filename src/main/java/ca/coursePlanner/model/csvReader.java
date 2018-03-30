@@ -7,12 +7,13 @@ import java.util.List;
 
 public class csvReader{
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws FileNotFoundException {
 
         String csvFile ="/Users/niragmehta/IdeaProjects/coursePlanner/data/course_data_2016.csv";
         String line = "";
         String cvsSplitBy = ",";
+
+        CourseCollection courseCollectionInstance=CourseCollection.getInstance();
         List<Course> courseList=CourseCollection.getInstance().getCsvCourseList();
 
         //read the csv file
@@ -48,17 +49,26 @@ public class csvReader{
             e.printStackTrace();
         }
 
-        try {
-            writeToCSV(courseList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        sortList(courseList,courseCollectionInstance);
+
+        courseCollectionInstance.printDebug();
+
+
+
+
+//        try {
+//            sortList(courseList);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
-    public static void writeToCSV(List<Course> courseList) throws FileNotFoundException
+    public static void sortList(List<Course> courseList,CourseCollection courseCollectionInstance) throws FileNotFoundException
     {
         Collections.sort(courseList,new CourseCollection());
+        courseCollectionInstance.setCsvCourseList(courseList);
+
         PrintWriter pw = new PrintWriter(new File("test.csv"));
         for(int i=0;i<courseList.size();i++)
         {
@@ -67,6 +77,8 @@ public class csvReader{
         }
 
     }
+
+
 
 
 }
