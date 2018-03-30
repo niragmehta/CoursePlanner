@@ -38,8 +38,13 @@ public class CourseOffer {
         PopulateEnrollmentTotal();
         System.out.print("\t"+semester+" in "+location + " by ");
 
+        StringBuilder stringBuilder=new StringBuilder();
         for (int i = 0; i < instructors.size(); i++)
-            System.out.print(instructors.get(i) + ", ");
+        {
+            stringBuilder.append(instructors.get(i)+", ");
+        }
+        stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length()-1,"");
+        System.out.print(stringBuilder.toString());
 
         System.out.println();
         for(int i=0;i<componentType.size();i++)

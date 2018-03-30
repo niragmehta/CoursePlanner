@@ -26,13 +26,24 @@ public class CSVReader {
                 // use comma as separator
                 String[] course = line.split(cvsSplitBy);
 
-                String instructors="";
+                StringBuilder instruc=new StringBuilder();
                 if(course.length>8)
                 {
                     for(int i=6;i<course.length-1;i++)
                     {
-                        instructors+=course[i]+", ";
+
+                        instruc.append(course[i]+", ");
                     }
+                    instruc.replace(instruc.length()-2,instruc.length()-1,"");
+                }
+                else {
+
+                    instruc=new StringBuilder(course[6]);
+                }
+
+                if(instruc.toString().equals("(null)"))
+                {
+                    instruc=new StringBuilder("");
                 }
 
                 //String string = instructors.substring(0,instructors.length()-1);
@@ -45,7 +56,7 @@ public class CSVReader {
                         course[3],
                         Integer.parseInt(course[4]),
                         Integer.parseInt(course[5]),
-                        instructors,
+                        instruc.toString(),
                         course[size]);
 
                 courseList.add(courseTemp);
