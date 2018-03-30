@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class csvReader{
+public class CSVReader {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public void read() throws FileNotFoundException {
 
         String csvFile ="/Users/niragmehta/IdeaProjects/coursePlanner/data/course_data_2016.csv";
         String line = "";
@@ -49,17 +49,12 @@ public class csvReader{
             e.printStackTrace();
         }
 
-        sortList(courseList,courseCollectionInstance);
-        courseCollectionInstance.printDebug();
+//        sortList(courseList,courseCollectionInstance);
+//        courseCollectionInstance.printDebug();
 
+        Collections.sort(courseList,new CourseCollection());
+        courseCollectionInstance.setCsvCourseList(courseList);
 
-
-
-//        try {
-//            sortList(courseList);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
 
     }
 

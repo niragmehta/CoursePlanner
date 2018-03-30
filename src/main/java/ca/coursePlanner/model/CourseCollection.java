@@ -18,6 +18,15 @@ public class CourseCollection implements Comparator<Course> {
         return instance;
     }
 
+    public void displayTopicList()
+    {
+        for(int i=0;i<topicList.size();i++)
+        {
+            topicList.get(i).displayCourseTopic();
+            System.out.println();
+        }
+    }
+
 
     public void populateTopicList()
     {
@@ -48,13 +57,12 @@ public class CourseCollection implements Comparator<Course> {
             else
             {
                 if(i>0)
-                    topicList.add(courseTopic);     // ins't it full of empty string as fields?
+                    topicList.add(courseTopic);
 
                 courseTopic=new CourseTopic(csvCourseList.get(i).getSubject(),csvCourseList.get(i).getCatalogNumber());
                 courseTopic.addToOffer(csvCourseList.get(i));
             }
         }
-
     }
 
 
@@ -67,59 +75,11 @@ public class CourseCollection implements Comparator<Course> {
         }
     }
 
-
-    //populates the list of CourseOffers
-//    public void extractCourses() {
-//        Collections.sort(csvCourseList, new CourseCollection());
-//        List<Course> temp=new ArrayList<>();
-//        String subject="";
-//        String catalogNumber="";
-//        String location="";
-//        int semester=0;
-//        int enrollmentCapacity=0;
-//        int check = 0;
-//
-//        for (int i = 0; i < csvCourseList.size(); i++) {
-//
-//            if(check==0)
-//            {
-//                temp=new ArrayList<>();
-//                temp.add(csvCourseList.get(i));
-//                subject=csvCourseList.get(i).getSubject();
-//                catalogNumber=csvCourseList.get(i).getCatalogNumber();
-//                location=csvCourseList.get(i).getLocation();
-//                semester=csvCourseList.get(i).getSemester();
-//                enrollmentCapacity=csvCourseList.get(i).getEnrolmentCapacity();
-//                ++check;
-//                continue;
-//            }
-//            if(csvCourseList.get(i).getSubject().equals(subject)
-//                    && csvCourseList.get(i).getCatalogNumber().equals(catalogNumber)
-//                    && csvCourseList.get(i).getLocation().equals(location)
-//                    && Integer.toString(csvCourseList.get(i).getSemester()).equals(Integer.toString(semester)))
-//            {
-//                temp.add(csvCourseList.get(i));
-//            }
-//            else
-//            {
-//                CourseOffer courseOffer=new CourseOffer(temp,subject,catalogNumber,enrollmentCapacity,semester,location);
-//                allCourseOfferings.add(courseOffer);
-//                temp=new ArrayList<>();
-//                temp.add(csvCourseList.get(i));
-//                check=0;
-//                continue;
-//            }
-//
-//        }
-//    }
-
-
     @Override
     public int compare(Course o1, Course o2) {
 
         int value1 = o1.getSubject().compareTo(o2.getSubject());
         if (value1 == 0) {
-//            int value2=o1Semester.compareTo(o2Semster);
             int value2 = o1.getCatalogNumber().compareTo(o2.getCatalogNumber());
             if (value2 == 0) {
                 String o1Semester = Integer.toString(o1.getSemester());
@@ -145,5 +105,11 @@ public class CourseCollection implements Comparator<Course> {
 
     public void setCsvCourseList(List<Course> csvCourseList) {
         instance.csvCourseList = csvCourseList;
+    }
+
+    public List<CourseTopic> getTopicList() {
+
+        populateTopicList();
+        return topicList;
     }
 }

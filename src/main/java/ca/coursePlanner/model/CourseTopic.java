@@ -17,26 +17,13 @@ public class CourseTopic {
         this.catalogNumber = catalogNumber;
     }
 
-    public String getSubject() {
-        return subject;
-    }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void displayCourseTopic()
+    {
+        System.out.print(subject+" "+catalogNumber);
+        for(int i=0;i<coursesOfferList.size();i++)
+            coursesOfferList.get(i).displayCourseOffer();
     }
-
-    public String getCatalogNumber() {
-        return catalogNumber;
-    }
-
-    public void setCatalogNumber(String catalogNumber) {
-        this.catalogNumber = catalogNumber;
-    }
-
-    public List<CourseOffer> getCoursesOfferList() {
-        return coursesOfferList;
-    }
-
 
     public boolean addToOffer(Course course)
     {
@@ -60,6 +47,25 @@ public class CourseTopic {
         // if a offer of that location and semester is found, add
         // else create new course offer
 
+    }
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getCatalogNumber() {
+        return catalogNumber;
+    }
+
+    public void setCatalogNumber(String catalogNumber) {
+        this.catalogNumber = catalogNumber;
+    }
+
+    public List<CourseOffer> getCoursesOfferList() {
+        return coursesOfferList;
     }
 
     @Override
