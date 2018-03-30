@@ -47,7 +47,7 @@ public class CourseTopic {
 
         if(course.getSubject().equals(subject) && course.getCatalogNumber().equals(catalogNumber))
         {
-            CourseOffer courseOffer = new CourseOffer(course.getLocation(), course.getSemester());
+            CourseOffer courseOffer = new CourseOffer(course.getLocation(), course.getSemester(),course.getSubject(),course.getCatalogNumber());
 
             courseOffer.addCourse(course);
             //courseOffer.getCourseList().add(course);

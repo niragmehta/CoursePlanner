@@ -50,7 +50,6 @@ public class csvReader{
         }
 
         sortList(courseList,courseCollectionInstance);
-
         courseCollectionInstance.printDebug();
 
 

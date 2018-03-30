@@ -6,16 +6,21 @@ import java.util.List;
 public class CourseOffer {
 
     private List<Course> courseList = new ArrayList<>();
+    String subject;
+    String catalogNumber;
     private String location;
     private int semester;
 
-    public CourseOffer(String location, int semester) {
+    public CourseOffer(String location, int semester,String subject,String catalogNumber) {
         this.location = location;
         this.semester = semester;
+        this.subject=subject;
+        this.catalogNumber=catalogNumber;
     }
 
     public boolean addCourse(Course course){
-        if(course.getLocation().equals(this.location) && course.getSemester() == this.semester)
+        if(course.getLocation().equals(this.location) && course.getSemester() == this.semester
+                && course.getSubject().equals(this.subject) && course.getCatalogNumber().equals(this.catalogNumber))
         {
             courseList.add(course);
             return true;
@@ -36,6 +41,13 @@ public class CourseOffer {
         return semester;
     }
 
+    public String getSubject() {
+        return subject;
+    }
+
+    public String getCatalogNumber() {
+        return catalogNumber;
+    }
 
     //    private String subject="";
 //    private String catalogNumber="";
