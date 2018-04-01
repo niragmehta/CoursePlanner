@@ -6,7 +6,7 @@ public class Facade {
 
     public static void writeDump() throws FileNotFoundException {
 
-        String path="data/course_data_2016.csv";
+        String path="data/course_data_2018.csv";
 
         CSVReader csvReader = new CSVReader();
         CourseCollection courseCollectionInstance = CourseCollection.getInstance();
