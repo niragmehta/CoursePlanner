@@ -5,10 +5,10 @@ import java.util.List;
 
 public class CourseTopic {
 
-    String subject = "";
-    String catalogNumber = "";
-    List<Offering> coursesOfferList = new ArrayList<>();
-    TxtWriter txtWriterInstance = TxtWriter.getInstance();
+    private String subject = "";
+    private String catalogNumber = "";
+    private List<Offering> coursesOfferList = new ArrayList<>();
+    private TxtWriter txtWriterInstance = TxtWriter.getInstance();
 
     public CourseTopic() {
     }
