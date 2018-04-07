@@ -5,44 +5,39 @@ import java.util.List;
 
 public class CourseTopic {
 
-    String subject="";
-    String catalogNumber="";
-    List<CourseOffer> coursesOfferList =new ArrayList<>();
-    TxtWriter txtWriterInstance=TxtWriter.getInstance();
+    String subject = "";
+    String catalogNumber = "";
+    List<Offering> coursesOfferList = new ArrayList<>();
+    TxtWriter txtWriterInstance = TxtWriter.getInstance();
 
-
-
-    public CourseTopic(){}
+    public CourseTopic() {
+    }
 
     public CourseTopic(String subject, String catalogNumber) {
         this.subject = subject;
         this.catalogNumber = catalogNumber;
     }
 
+    public void displayCourseTopic() {
+        System.out.print(subject + " " + catalogNumber + "\n");
+        txtWriterInstance.append(subject + " " + catalogNumber + "\n");
 
-    public void displayCourseTopic()
-    {
-        System.out.print(subject+" "+catalogNumber+"\n");
-        txtWriterInstance.append(subject+" "+catalogNumber+"\n");
-
-        for(int i=0;i<coursesOfferList.size();i++)
+        for (int i = 0; i < coursesOfferList.size(); i++)
             coursesOfferList.get(i).displayCourseOffer();
     }
 
-    public boolean addToOffer(Course course)
-    {
-        for(CourseOffer offer : coursesOfferList){
-            if(offer.addCourse(course))
+    public boolean addToOffer(Course course) {
+        for (Offering offer : coursesOfferList) {
+            if (offer.addCourse(course))
                 return true;
         }
 
-        if(course.getSubject().equals(subject) && course.getCatalogNumber().equals(catalogNumber))
-        {
-            CourseOffer courseOffer = new CourseOffer(course.getLocation(), course.getSemester(),course.getSubject(),course.getCatalogNumber());
+        if (course.getSubject().equals(subject) && course.getCatalogNumber().equals(catalogNumber)) {
+            Offering offering = new Offering(course.getLocation(), course.getSemester(), course.getSubject(), course.getCatalogNumber());
 
-            courseOffer.addCourse(course);
-            //courseOffer.getCourseList().add(course);
-            coursesOfferList.add(courseOffer);
+            offering.addCourse(course);
+            //offering.getCourseList().add(course);
+            coursesOfferList.add(offering);
             return true;
         }
         return false;
@@ -50,8 +45,8 @@ public class CourseTopic {
         // check what is the course's location and semester
         // if a offer of that location and semester is found, add
         // else create new course offer
-
     }
+
     public String getSubject() {
         return subject;
     }
@@ -68,7 +63,7 @@ public class CourseTopic {
         this.catalogNumber = catalogNumber;
     }
 
-    public List<CourseOffer> getCoursesOfferList() {
+    public List<Offering> getCoursesOfferList() {
         return coursesOfferList;
     }
 
@@ -77,7 +72,7 @@ public class CourseTopic {
         return "CourseTopic{" +
                 "subject='" + subject + '\'' +
                 ", catalogNumber='" + catalogNumber + '\'' +
-               // ", coursesOfferList=" + coursesOfferList +
+                // ", coursesOfferList=" + coursesOfferList +
                 '}';
     }
 }

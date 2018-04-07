@@ -3,7 +3,7 @@ package ca.coursePlanner.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseOffer {
+public class Offering {
 
     private List<Course> courseList = new ArrayList<>();
     String subject;
@@ -18,7 +18,7 @@ public class CourseOffer {
 
     TxtWriter txtWriterInstance=TxtWriter.getInstance();
 
-    public CourseOffer(String location, int semester,String subject,String catalogNumber) {
+    public Offering(String location, int semester, String subject, String catalogNumber) {
         this.location = location;
         this.semester = semester;
         this.subject=subject;

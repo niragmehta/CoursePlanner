@@ -9,11 +9,11 @@ public class Facade {
         String path="data/course_data_2018.csv";
 
         CSVReader csvReader = new CSVReader();
-        CourseCollection courseCollectionInstance = CourseCollection.getInstance();
+        TopicCollection topicCollectionInstance = TopicCollection.getInstance();
 
         csvReader.read(path);
-        courseCollectionInstance.printDebug();
-        courseCollectionInstance.displayTopicList();
+        topicCollectionInstance.printDebug();
+        topicCollectionInstance.displayTopicList();
 
         TxtWriter txtWriter=TxtWriter.getInstance();
         txtWriter.write();

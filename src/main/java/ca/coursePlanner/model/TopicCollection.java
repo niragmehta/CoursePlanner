@@ -4,44 +4,40 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class CourseCollection implements Comparator<Course> {
+/**
+ * This class is a data collection that stores all the Course by parsing a provided csv file.
+ */
+public class TopicCollection implements Comparator<Course> {
 
     List<Course> csvCourseList = new ArrayList<>();
-    //private List<CourseOffer> allCourseOfferings = new ArrayList<>();
-    List<CourseTopic> topicList =new ArrayList<>();
+    //private List<Offering> allCourseOfferings = new ArrayList<>();
+    List<CourseTopic> topicList = new ArrayList<>();
 
-    private static CourseCollection instance = null;
+    private static TopicCollection instance = null;
 
-    public static CourseCollection getInstance() {
+    public static TopicCollection getInstance() {
         if (instance == null)
-            instance = new CourseCollection();
+            instance = new TopicCollection();
         return instance;
     }
 
-    public void displayTopicList()
-    {
+    public void displayTopicList() {
         populateTopicList();
-        for(int i=0;i<topicList.size();i++)
-        {
+        for (int i = 0; i < topicList.size(); i++) {
             topicList.get(i).displayCourseTopic();
         }
     }
 
+    public void populateTopicList() {
+        CourseTopic courseTopic = new CourseTopic();
 
-    public void populateTopicList()
-    {
-        CourseTopic courseTopic=new CourseTopic();
-
-        for(int i=0;i<csvCourseList.size();i++)
-        {
+        for (int i = 0; i < csvCourseList.size(); i++) {
             //for the last element
-            if(i==csvCourseList.size()-1)
-            {
+            if (i == csvCourseList.size() - 1) {
                 //incase the last element doesnt bvelong to the previous block
-                if(!courseTopic.getSubject().equals(csvCourseList.get(i).getSubject()) ||
-                        !courseTopic.getCatalogNumber().equals(csvCourseList.get(i).getCatalogNumber()))
-                {
-                    courseTopic=new CourseTopic(csvCourseList.get(i).getSubject(),csvCourseList.get(i).getCatalogNumber());
+                if (!courseTopic.getSubject().equals(csvCourseList.get(i).getSubject()) ||
+                        !courseTopic.getCatalogNumber().equals(csvCourseList.get(i).getCatalogNumber())) {
+                    courseTopic = new CourseTopic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
                     courseTopic.addToOffer(csvCourseList.get(i));
                     topicList.add(courseTopic);
                     return;
@@ -51,27 +47,22 @@ public class CourseCollection implements Comparator<Course> {
                 topicList.add(courseTopic);
                 return;
             }
-
-            if(courseTopic.addToOffer(csvCourseList.get(i)))
+            if (courseTopic.addToOffer(csvCourseList.get(i)))
                 continue;
-            else
-            {
-                if(i>0)
+            else {
+                if (i > 0)
                     topicList.add(courseTopic);
-
-                courseTopic=new CourseTopic(csvCourseList.get(i).getSubject(),csvCourseList.get(i).getCatalogNumber());
+                courseTopic = new CourseTopic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
                 courseTopic.addToOffer(csvCourseList.get(i));
             }
         }
     }
 
 
-    public void printDebug()
-    {
+    public void printDebug() {
         populateTopicList();
-        for(int i=0;i<topicList.size();i++)
-        {
-            System.out.println(topicList.get(i).toString());
+        for (CourseTopic aTopicList : topicList) {
+            System.out.println(aTopicList.toString());
         }
     }
 
@@ -108,7 +99,6 @@ public class CourseCollection implements Comparator<Course> {
     }
 
     public List<CourseTopic> getTopicList() {
-
         populateTopicList();
         return topicList;
     }

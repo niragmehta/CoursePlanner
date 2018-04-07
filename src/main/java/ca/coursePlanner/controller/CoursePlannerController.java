@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 @RestController
 public class CoursePlannerController {
 
-
     @GetMapping("/dump-model")
     public String summarizeData() throws FileNotFoundException {
         Facade.writeDump();
