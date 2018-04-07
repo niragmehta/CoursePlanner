@@ -11,49 +11,51 @@ public class TopicCollection implements Comparator<Course> {
 
     List<Course> csvCourseList = new ArrayList<>();
     //private List<Offering> allCourseOfferings = new ArrayList<>();
-    List<CourseTopic> topicList = new ArrayList<>();
+    List<Topic> topicList = new ArrayList<>();
 
     private static TopicCollection instance = null;
 
     public static TopicCollection getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new TopicCollection();
+            instance.populateTopicList();
+        }
         return instance;
     }
 
     public void displayTopicList() {
         populateTopicList();
-        for (int i = 0; i < topicList.size(); i++) {
-            topicList.get(i).displayCourseTopic();
+        for (Topic aTopicList : topicList) {
+            aTopicList.displayCourseTopic();
         }
     }
 
-    public void populateTopicList() {
-        CourseTopic courseTopic = new CourseTopic();
+    private void populateTopicList() {
+        Topic topic = new Topic();
 
         for (int i = 0; i < csvCourseList.size(); i++) {
             //for the last element
             if (i == csvCourseList.size() - 1) {
                 //incase the last element doesnt bvelong to the previous block
-                if (!courseTopic.getSubject().equals(csvCourseList.get(i).getSubject()) ||
-                        !courseTopic.getCatalogNumber().equals(csvCourseList.get(i).getCatalogNumber())) {
-                    courseTopic = new CourseTopic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
-                    courseTopic.addToOffer(csvCourseList.get(i));
-                    topicList.add(courseTopic);
+                if (!topic.getSubject().equals(csvCourseList.get(i).getSubject()) ||
+                        !topic.getCatalogNumber().equals(csvCourseList.get(i).getCatalogNumber())) {
+                    topic = new Topic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
+                    topic.addToOffer(csvCourseList.get(i));
+                    topicList.add(topic);
                     return;
                 }
-                //else manually add last element to the latest block, and add courseTopic to the list manually
-                courseTopic.addToOffer(csvCourseList.get(i));
-                topicList.add(courseTopic);
+                //else manually add last element to the latest block, and add topic to the list manually
+                topic.addToOffer(csvCourseList.get(i));
+                topicList.add(topic);
                 return;
             }
-            if (courseTopic.addToOffer(csvCourseList.get(i)))
+            if (topic.addToOffer(csvCourseList.get(i)))
                 continue;
             else {
                 if (i > 0)
-                    topicList.add(courseTopic);
-                courseTopic = new CourseTopic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
-                courseTopic.addToOffer(csvCourseList.get(i));
+                    topicList.add(topic);
+                topic = new Topic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
+                topic.addToOffer(csvCourseList.get(i));
             }
         }
     }
@@ -61,7 +63,7 @@ public class TopicCollection implements Comparator<Course> {
 
     public void printDebug() {
         populateTopicList();
-        for (CourseTopic aTopicList : topicList) {
+        for (Topic aTopicList : topicList) {
             System.out.println(aTopicList.toString());
         }
     }
@@ -89,7 +91,6 @@ public class TopicCollection implements Comparator<Course> {
             return value1;
     }
 
-
     public List<Course> getCsvCourseList() {
         return csvCourseList;
     }
@@ -98,7 +99,7 @@ public class TopicCollection implements Comparator<Course> {
         instance.csvCourseList = csvCourseList;
     }
 
-    public List<CourseTopic> getTopicList() {
+    public List<Topic> getTopicList() {
         populateTopicList();
         return topicList;
     }

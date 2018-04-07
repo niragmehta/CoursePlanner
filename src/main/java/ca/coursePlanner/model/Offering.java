@@ -3,18 +3,21 @@ package ca.coursePlanner.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class models a course offered at a given semester and given campus location
+ */
 public class Offering {
 
     private List<Course> courseList = new ArrayList<>();
-    String subject;
-    String catalogNumber;
+    private String subject;
+    private String catalogNumber;
     private String location;
     private int semester;
-
-    List<String> componentType=new ArrayList<>();
-    List<Integer> componentCapacity=new ArrayList<>();
-    List<Integer> componentTotal=new ArrayList<>();
-    List<String> instructors=new ArrayList<>();
+    private int courseOfferingId;
+    private List<String> componentType=new ArrayList<>();
+    private List<Integer> componentCapacity=new ArrayList<>();
+    private List<Integer> componentTotal=new ArrayList<>();
+    private List<String> instructors=new ArrayList<>();
 
     TxtWriter txtWriterInstance=TxtWriter.getInstance();
 
