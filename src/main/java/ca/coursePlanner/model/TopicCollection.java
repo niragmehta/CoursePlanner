@@ -1,5 +1,6 @@
 package ca.coursePlanner.model;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -9,14 +10,15 @@ import java.util.List;
  */
 public class TopicCollection implements Comparator<Course> {
 
-    List<Course> csvCourseList = new ArrayList<>();
+    private List<Course> csvCourseList = new ArrayList<>();
     //private List<Offering> allCourseOfferings = new ArrayList<>();
-    List<Topic> topicList = new ArrayList<>();
+    private List<Topic> topicList = new ArrayList<>();
 
     private static TopicCollection instance = null;
 
-    public static TopicCollection getInstance() {
+    public static TopicCollection getInstance() throws FileNotFoundException {
         if (instance == null) {
+            CSVReader.read();
             instance = new TopicCollection();
             instance.populateTopicList();
         }
@@ -100,7 +102,6 @@ public class TopicCollection implements Comparator<Course> {
     }
 
     public List<Topic> getTopicList() {
-        populateTopicList();
         return topicList;
     }
 }

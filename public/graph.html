@@ -20,7 +20,7 @@
 
         <h2>Department
             <select v-model="selectedDept">
-                <option v-for="option in departmentList" :value="option">
+                <option v-for="option in departmentToDeleteLaterList" :value="option">
                     {{ option.name }}
                 </option>
             </select>

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CSVReader {
 
-    public void read(String path) throws FileNotFoundException {
+public static void read() throws FileNotFoundException {
         // TODO: fix the ghost ', ,' prof  || ',' when two empty profs name
         String line = "";
         String cvsSplitBy = ",";
@@ -15,27 +15,21 @@ public class CSVReader {
         List<Course> courseList = TopicCollection.getInstance().getCsvCourseList();
 
         //read the csv file
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-
+        try (BufferedReader br = new BufferedReader(new FileReader("data/course_data_2018.csv"))) {
             line = br.readLine();
             while ((line = br.readLine()) != null) {
-
-
                 // use comma as separator
                 String[] course = line.split(cvsSplitBy);
 
                 StringBuilder instruc = new StringBuilder();
                 if (course.length > 8) {
                     for (int i = 6; i < course.length - 1; i++) {
-
                         instruc.append(course[i] + ", ");
                     }
                     instruc.replace(instruc.length() - 2, instruc.length() - 1, "");
                 } else {
-
                     instruc = new StringBuilder(course[6]);
                 }
-
                 if (instruc.toString().equals("(null)") || instruc.toString().equals("<null>")) {
                     instruc = new StringBuilder("");
                 }
@@ -66,14 +60,11 @@ public class CSVReader {
         topicCollectionInstance.setCsvCourseList(courseList);
 
         PrintWriter pw = new PrintWriter(new File("test.csv"));
-        for (int i = 0; i < courseList.size(); i++) {
-            pw.append(courseList.get(i).toString());
+        for (Course aCourseList : courseList) {
+            pw.append(aCourseList.toString());
             pw.append("\n");
         }
-
     }
-
-
 }
 
 

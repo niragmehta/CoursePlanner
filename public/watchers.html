@@ -22,7 +22,7 @@
     <h2>Add Watcher</h2>
     <p>
         <select v-model="selectedDept" class="dropdown">
-            <option v-for="option in departmentList" :value="option">
+            <option v-for="option in departmentToDeleteLaterList" :value="option">
                 {{ option.name }}
             </option>
         </select>
@@ -68,7 +68,7 @@
             class="watchers"
         >
             <td>{{watcher.id}}</td>
-            <td>{{watcher.department.name}}</td>
+            <td>{{watcher.departmentToDeleteLater.name}}</td>
             <td>{{watcher.course.catalogNumber}}</td>
             <td>{{watcher.events.length}}</td>
 
