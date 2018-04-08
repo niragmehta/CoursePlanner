@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * This class is a collection of all the departmentToDeleteLaterList at SFU.
+ * This class is a collection of all the departmentList at SFU.
  */
 public class DepartmentCollection {
-    private List<DepartmentToDeleteLater> departmentToDeleteLaterList = new ArrayList<>();
+    private List<Department> departmentList = new ArrayList<>();
     private static DepartmentCollection instance = null;
 
     DepartmentCollection() {
@@ -23,16 +23,16 @@ public class DepartmentCollection {
         return instance;
     }
 
-    public List<DepartmentToDeleteLater> getDepartmentToDeleteLaterList() {
-        return departmentToDeleteLaterList;
+    public List<Department> getDepartmentList() {
+        return departmentList;
     }
 
-    public void setDepartmentToDeleteLaterList(List<DepartmentToDeleteLater> departmentToDeleteLaterList) {
-        this.departmentToDeleteLaterList = departmentToDeleteLaterList;
+    public void setDepartmentList(List<Department> departmentList) {
+        this.departmentList = departmentList;
     }
 
     private void populate() throws FileNotFoundException {
-        departmentToDeleteLaterList = new ArrayList<>();
+        departmentList = new ArrayList<>();
         AtomicInteger deptId = new AtomicInteger();
         AtomicInteger courseId = new AtomicInteger();
         
@@ -43,7 +43,7 @@ public class DepartmentCollection {
             return;
         }
 
-        DepartmentToDeleteLater departmentToDeleteLater = new DepartmentToDeleteLater();
+        Department departmentToDeleteLater = new Department();
         departmentToDeleteLater.setName(topicList.get(0).getSubject());
         departmentToDeleteLater.setDeptId(deptId.incrementAndGet());
         
@@ -55,15 +55,15 @@ public class DepartmentCollection {
             }
             else if (!departmentToDeleteLater.getName().equals(topicList.get(i).getSubject())) {
                 courseId=new AtomicInteger();
-                departmentToDeleteLaterList.add(departmentToDeleteLater);
-                departmentToDeleteLater = new DepartmentToDeleteLater();
+                departmentList.add(departmentToDeleteLater);
+                departmentToDeleteLater = new Department();
                 departmentToDeleteLater.setName(topicList.get(i).getSubject());
                 departmentToDeleteLater.setDeptId(deptId.incrementAndGet());
                 topicList.get(i).setCourseId(courseId.incrementAndGet());
                 departmentToDeleteLater.getTopics().add(topicList.get(i));
                 }
             if (i == topicList.size() - 1) {
-                departmentToDeleteLaterList.add(departmentToDeleteLater);
+                departmentList.add(departmentToDeleteLater);
                 return;
             }
         }

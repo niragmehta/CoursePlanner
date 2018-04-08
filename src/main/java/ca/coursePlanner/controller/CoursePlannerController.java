@@ -29,7 +29,7 @@ public class CoursePlannerController {
     }
 
     @GetMapping("/api/departments")
-    public List<Department> dumpDepartments()
+    public void dumpDepartments()
     {
 
     }
