@@ -7,7 +7,7 @@ public class Topic {
 
     private String subject = "";
     private String catalogNumber = "";
-    private List<Offering> coursesOfferList = new ArrayList<>();
+    private List<CourseByCampus> coursesOfferList = new ArrayList<>();
     private TxtWriter txtWriterInstance = TxtWriter.getInstance();
 
     public Topic() {
@@ -27,17 +27,17 @@ public class Topic {
     }
 
     public boolean addToOffer(csvCourseUnit csvCourseUnit) {
-        for (Offering offer : coursesOfferList) {
+        for (CourseByCampus offer : coursesOfferList) {
             if (offer.addCourse(csvCourseUnit))
                 return true;
         }
 
         if (csvCourseUnit.getSubject().equals(subject) && csvCourseUnit.getCatalogNumber().equals(catalogNumber)) {
-            Offering offering = new Offering(csvCourseUnit.getLocation(), csvCourseUnit.getSemester(), csvCourseUnit.getSubject(), csvCourseUnit.getCatalogNumber());
+            CourseByCampus courseByCampus = new CourseByCampus(csvCourseUnit.getLocation(), csvCourseUnit.getSemester(), csvCourseUnit.getSubject(), csvCourseUnit.getCatalogNumber());
 
-            offering.addCourse(csvCourseUnit);
-            //offering.getCsvCourseUnitList().add(csvCourseUnit);
-            coursesOfferList.add(offering);
+            courseByCampus.addCourse(csvCourseUnit);
+            //courseByCampus.getCsvCourseUnitList().add(csvCourseUnit);
+            coursesOfferList.add(courseByCampus);
             return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class Topic {
         this.catalogNumber = catalogNumber;
     }
 
-    public List<Offering> getCoursesOfferList() {
+    public List<CourseByCampus> getCoursesOfferList() {
         return coursesOfferList;
     }
 

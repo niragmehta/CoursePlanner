@@ -4,6 +4,7 @@ package ca.coursePlanner.controller;
 import ca.coursePlanner.model.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
@@ -43,6 +44,13 @@ public class CoursePlannerController {
     {
         CourseCollection.populateCourseCollection(deptId);
         return CourseCollection.getCourseList();
+    }
+
+    @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings")
+    public List<Offering> getOfferings(@PathVariable("deptIs") int deptId, @PathVariable("courseId") int courseId){
+
+
+
     }
 
 

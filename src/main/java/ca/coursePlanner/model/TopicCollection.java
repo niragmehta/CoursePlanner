@@ -10,7 +10,7 @@ import java.util.List;
 public class TopicCollection implements Comparator<csvCourseUnit> {
 
     List<csvCourseUnit> csvCsvCourseUnitList = new ArrayList<>();
-    //private List<Offering> allCourseOfferings = new ArrayList<>();
+    //private List<CourseByCampus> allCourseOfferings = new ArrayList<>();
     List<Topic> topicList = new ArrayList<>();
 
     private static TopicCollection instance = null;

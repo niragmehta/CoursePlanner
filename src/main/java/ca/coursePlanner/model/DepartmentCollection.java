@@ -12,7 +12,7 @@ public class DepartmentCollection {
 
     public static void populateDepartmentList()
     {
-
+        departmentList = new ArrayList<>();
         TopicCollection.getInstance().populateTopicList();
         List<Topic> topicList=TopicCollection.getInstance().getTopicList();
 

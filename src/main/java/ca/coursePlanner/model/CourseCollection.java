@@ -11,6 +11,7 @@ public class CourseCollection {
 
     public static void populateCourseCollection(int id)
     {
+        courseList = new ArrayList<>();
 
         String name="";
         List<Department> departmentList=DepartmentCollection.getDepartmentList();

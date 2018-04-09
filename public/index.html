@@ -77,13 +77,13 @@
                         <td>Instructor(s)</td>
                         <td>Campus</td>
                     </tr>
-                    <tr v-for="offering in courseOfferings"
-                        v-on:click='selectOffering(offering)'
+                    <tr v-for="courseByCampus in courseOfferings"
+                        v-on:click='selectOffering(courseByCampus)'
                         class="offerings"
                     >
-                        <td>({{offering.semesterCode}}) {{offering.term}} {{offering.year}}</td>
-                        <td>with {{offering.instructors}}</td>
-                        <td>in {{offering.location}}</td>
+                        <td>({{courseByCampus.semesterCode}}) {{courseByCampus.term}} {{courseByCampus.year}}</td>
+                        <td>with {{courseByCampus.instructors}}</td>
+                        <td>in {{courseByCampus.location}}</td>
                     </tr>
                 </table>
             </div>
