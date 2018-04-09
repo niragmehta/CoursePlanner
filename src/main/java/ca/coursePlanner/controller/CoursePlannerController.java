@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 @RestController
 public class CoursePlannerController {
 
-    @GetMapping("/dump-model")
+    @GetMapping("/api/dump-model")
     public String summarizeData() throws FileNotFoundException {
         Facade.writeDump();
         TxtWriter txtWriterInstance = TxtWriter.getInstance();
@@ -25,4 +25,8 @@ public class CoursePlannerController {
             public String authorName = "Nirag and Warren";
         };
     }
+
+
+
+
 }

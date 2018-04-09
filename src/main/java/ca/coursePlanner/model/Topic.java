@@ -3,17 +3,17 @@ package ca.coursePlanner.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseTopic {
+public class Topic {
 
     private String subject = "";
     private String catalogNumber = "";
     private List<Offering> coursesOfferList = new ArrayList<>();
     private TxtWriter txtWriterInstance = TxtWriter.getInstance();
 
-    public CourseTopic() {
+    public Topic() {
     }
 
-    public CourseTopic(String subject, String catalogNumber) {
+    public Topic(String subject, String catalogNumber) {
         this.subject = subject;
         this.catalogNumber = catalogNumber;
     }
@@ -69,7 +69,7 @@ public class CourseTopic {
 
     @Override
     public String toString() {
-        return "CourseTopic{" +
+        return "Topic{" +
                 "subject='" + subject + '\'' +
                 ", catalogNumber='" + catalogNumber + '\'' +
                 // ", coursesOfferList=" + coursesOfferList +
