@@ -33,7 +33,12 @@ public class OfferingCollection {
                     int semester=list.get(j).getSemester();
                     int year=getYear(semester);
                     String term=getTerm(semester);
-                    String instructors=OfferingLocationCampus.getInstructors();
+
+
+                    StringBuilder instructors=new StringBuilder();
+                    List<String> instructorsList=list.get(j).getInstructors();
+                    for(int t=0;t<instructorsList.size();t++)
+                        instructors.append(instructorsList.get(t));
 
 
                     offering.setCourseOfferingId(atomicInteger.incrementAndGet());
@@ -41,7 +46,7 @@ public class OfferingCollection {
                     offering.setSemesterCode(list.get(j).getSemester());
                     offering.setYear(year);
                     offering.setTerm(term);
-                    offering.setInstructors(instructors);
+                    offering.setInstructors(instructors.toString());
                     offering.setCourse(course);
 
                     offeringList.add(offering);

@@ -119,4 +119,7 @@ public class CourseByCampus {
         return catalogNumber;
     }
 
+    public List<String> getInstructors() {
+        return instructors;
+    }
 }
