@@ -32,9 +32,9 @@
 
             <h2><span v-if="selectedDept">{{selectedDept.name}} </span>Courses</h2>
             <ul id="courses">
-                <li v-for="course in courses">
-                    <a href="#" v-on:click='selectCourse(course)'>
-                        {{course.catalogNumber}}
+                <li v-for="csvCourseUnit in courses">
+                    <a href="#" v-on:click='selectCourse(csvCourseUnit)'>
+                        {{csvCourseUnit.catalogNumber}}
                     </a>
                 </li>
 
@@ -65,7 +65,7 @@
         <div id="contents">
             <div v-if="!selectedCourse">
                 <h2>Course Offerings</h2>
-                <p>Please select a department and then a course from on the left.</p>
+                <p>Please select a department and then a csvCourseUnit from on the left.</p>
             </div>
 
             <div v-if="selectedCourse">

@@ -26,25 +26,25 @@ public class Topic {
             coursesOfferList.get(i).displayCourseOffer();
     }
 
-    public boolean addToOffer(Course course) {
+    public boolean addToOffer(csvCourseUnit csvCourseUnit) {
         for (Offering offer : coursesOfferList) {
-            if (offer.addCourse(course))
+            if (offer.addCourse(csvCourseUnit))
                 return true;
         }
 
-        if (course.getSubject().equals(subject) && course.getCatalogNumber().equals(catalogNumber)) {
-            Offering offering = new Offering(course.getLocation(), course.getSemester(), course.getSubject(), course.getCatalogNumber());
+        if (csvCourseUnit.getSubject().equals(subject) && csvCourseUnit.getCatalogNumber().equals(catalogNumber)) {
+            Offering offering = new Offering(csvCourseUnit.getLocation(), csvCourseUnit.getSemester(), csvCourseUnit.getSubject(), csvCourseUnit.getCatalogNumber());
 
-            offering.addCourse(course);
-            //offering.getCourseList().add(course);
+            offering.addCourse(csvCourseUnit);
+            //offering.getCsvCourseUnitList().add(csvCourseUnit);
             coursesOfferList.add(offering);
             return true;
         }
         return false;
 
-        // check what is the course's location and semester
+        // check what is the csvCourseUnit's location and semester
         // if a offer of that location and semester is found, add
-        // else create new course offer
+        // else create new csvCourseUnit offer
     }
 
     public String getSubject() {

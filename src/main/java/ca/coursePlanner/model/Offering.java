@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Offering {
 
-    private List<Course> courseList = new ArrayList<>();
+    private List<csvCourseUnit> csvCourseUnitList = new ArrayList<>();
     String subject;
     String catalogNumber;
     private String location;
@@ -25,11 +25,11 @@ public class Offering {
         this.catalogNumber=catalogNumber;
     }
 
-    public boolean addCourse(Course course){
-        if(course.getLocation().equals(this.location) && course.getSemester() == this.semester
-                && course.getSubject().equals(this.subject) && course.getCatalogNumber().equals(this.catalogNumber))
+    public boolean addCourse(csvCourseUnit csvCourseUnit){
+        if(csvCourseUnit.getLocation().equals(this.location) && csvCourseUnit.getSemester() == this.semester
+                && csvCourseUnit.getSubject().equals(this.subject) && csvCourseUnit.getCatalogNumber().equals(this.catalogNumber))
         {
-            courseList.add(course);
+            csvCourseUnitList.add(csvCourseUnit);
             return true;
         }
         return false;
@@ -66,33 +66,33 @@ public class Offering {
 
     public void PopulateEnrollmentTotal()
     {
-        for(int i=0;i<courseList.size();i++)
+        for(int i = 0; i< csvCourseUnitList.size(); i++)
         {
-            if(!instructors.contains(courseList.get(i).getInstructor()))
-                instructors.add(courseList.get(i).getInstructor());
+            if(!instructors.contains(csvCourseUnitList.get(i).getInstructor()))
+                instructors.add(csvCourseUnitList.get(i).getInstructor());
 
 
-            if(componentType.contains(courseList.get(i).getComponentCode()))
+            if(componentType.contains(csvCourseUnitList.get(i).getComponentCode()))
             {
-                int index=componentType.indexOf(courseList.get(i).getComponentCode());
+                int index=componentType.indexOf(csvCourseUnitList.get(i).getComponentCode());
 
-                int temp=componentCapacity.get(index)+courseList.get(i).getEnrolmentCapacity();
+                int temp=componentCapacity.get(index)+ csvCourseUnitList.get(i).getEnrolmentCapacity();
                 componentCapacity.set(index,temp);
-                temp=componentTotal.get(index)+courseList.get(i).getEnrolmentTotal();
+                temp=componentTotal.get(index)+ csvCourseUnitList.get(i).getEnrolmentTotal();
                 componentTotal.set(index,temp);
             }
             else
             {
-                componentType.add(courseList.get(i).getComponentCode());
-                componentCapacity.add(courseList.get(i).getEnrolmentCapacity());
-                componentTotal.add(courseList.get(i).getEnrolmentTotal());
+                componentType.add(csvCourseUnitList.get(i).getComponentCode());
+                componentCapacity.add(csvCourseUnitList.get(i).getEnrolmentCapacity());
+                componentTotal.add(csvCourseUnitList.get(i).getEnrolmentTotal());
             }
         }
     }
 
 
-    public List<Course> getCourseList() {
-        return courseList;
+    public List<csvCourseUnit> getCsvCourseUnitList() {
+        return csvCourseUnitList;
     }
 
     public String getLocation() {

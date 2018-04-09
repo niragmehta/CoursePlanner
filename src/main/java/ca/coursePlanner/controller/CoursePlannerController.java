@@ -1,11 +1,9 @@
 package ca.coursePlanner.controller;
 
 
-import ca.coursePlanner.model.Department;
-import ca.coursePlanner.model.DepartmentCollection;
-import ca.coursePlanner.model.Facade;
-import ca.coursePlanner.model.TxtWriter;
+import ca.coursePlanner.model.*;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
@@ -17,14 +15,19 @@ public class CoursePlannerController {
     @GetMapping("/api/dump-model")
     public String summarizeData() throws FileNotFoundException {
         Facade.writeDump();
-        TxtWriter txtWriterInstance = TxtWriter.getInstance();
-        return txtWriterInstance.getString();
+
+        String info="DEPT="+DepartmentCollection.getDepartmentList().size()+"\n"
+                +"COURSE="+ TopicCollection.getInstance().getTopicList().size()+"\n"
+                +"OFFERING="+Facade.getTotalCourseOfferingCount();
+
+        return info;
+//        TxtWriter txtWriterInstance = TxtWriter.getInstance();
     }
 
     @GetMapping("/api/about")
     public Object getAboutMessage() {
         return new Object(){
-            public String appName = "Course Planner";
+            public String appName = "csvCourseUnit Planner";
             public String authorName = "Nirag and Warren";
         };
     }
@@ -32,10 +35,14 @@ public class CoursePlannerController {
     @GetMapping("/api/departments")
     public List<Department> getDepartments() throws FileNotFoundException
     {
-        Facade.writeDump();
-        DepartmentCollection.populateDepartmentList();
         return DepartmentCollection.getDepartmentList();
+    }
 
+    @GetMapping("api/departments/{id}/courses")
+    public List<Course> getSpecificCourse(@PathVariable("id") int deptId)
+    {
+        CourseCollection.populateCourseCollection(deptId);
+        return CourseCollection.getCourseList();
     }
 
 

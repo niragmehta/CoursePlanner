@@ -12,7 +12,7 @@ public class CSVReader {
         String cvsSplitBy = ",";
 
         TopicCollection topicCollectionInstance = TopicCollection.getInstance();
-        List<Course> courseList = TopicCollection.getInstance().getCsvCourseList();
+        List<csvCourseUnit> csvCourseUnitList = TopicCollection.getInstance().getCsvCsvCourseUnitList();
 
         //read the csv file
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -41,7 +41,7 @@ public class CSVReader {
                 }
 
                 int size = course.length - 1;
-                Course courseTemp = new Course(Integer.parseInt(course[0]),
+                csvCourseUnit csvCourseUnitTemp = new csvCourseUnit(Integer.parseInt(course[0]),
                         course[1],
                         course[2],
                         course[3],
@@ -50,24 +50,24 @@ public class CSVReader {
                         instruc.toString(),
                         course[size]);
 
-                courseList.add(courseTemp);
+                csvCourseUnitList.add(csvCourseUnitTemp);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Collections.sort(courseList, new TopicCollection());
-        topicCollectionInstance.setCsvCourseList(courseList);
+        Collections.sort(csvCourseUnitList, new TopicCollection());
+        topicCollectionInstance.setCsvCsvCourseUnitList(csvCourseUnitList);
     }
 
-    public static void sortList(List<Course> courseList, TopicCollection topicCollectionInstance) throws FileNotFoundException {
-        Collections.sort(courseList, new TopicCollection());
-        topicCollectionInstance.setCsvCourseList(courseList);
+    public static void sortList(List<csvCourseUnit> csvCourseUnitList, TopicCollection topicCollectionInstance) throws FileNotFoundException {
+        Collections.sort(csvCourseUnitList, new TopicCollection());
+        topicCollectionInstance.setCsvCsvCourseUnitList(csvCourseUnitList);
 
         PrintWriter pw = new PrintWriter(new File("test.csv"));
-        for (int i = 0; i < courseList.size(); i++) {
-            pw.append(courseList.get(i).toString());
+        for (int i = 0; i < csvCourseUnitList.size(); i++) {
+            pw.append(csvCourseUnitList.get(i).toString());
             pw.append("\n");
         }
 

@@ -1,6 +1,7 @@
 package ca.coursePlanner.model;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public class Facade {
 
@@ -20,6 +21,16 @@ public class Facade {
 
     }
 
+    public static int getTotalCourseOfferingCount()
+    {
 
+        int count=0;
+        List<Topic> topicList=TopicCollection.getInstance().getTopicList();
+        for(int i=0;i<topicList.size();i++)
+        {
+            count+=topicList.get(i).getCoursesOfferList().size();
+        }
+        return count;
+    }
 
 }

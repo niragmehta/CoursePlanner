@@ -5,11 +5,11 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * This class is a data collection that stores all the Course by parsing a provided csv file.
+ * This class is a data collection that stores all the csvCourseUnit by parsing a provided csv file.
  */
-public class TopicCollection implements Comparator<Course> {
+public class TopicCollection implements Comparator<csvCourseUnit> {
 
-    List<Course> csvCourseList = new ArrayList<>();
+    List<csvCourseUnit> csvCsvCourseUnitList = new ArrayList<>();
     //private List<Offering> allCourseOfferings = new ArrayList<>();
     List<Topic> topicList = new ArrayList<>();
 
@@ -30,30 +30,32 @@ public class TopicCollection implements Comparator<Course> {
 
     public void populateTopicList() {
         Topic topic = new Topic();
+        topicList=new ArrayList<>();
 
-        for (int i = 0; i < csvCourseList.size(); i++) {
+
+        for (int i = 0; i < csvCsvCourseUnitList.size(); i++) {
             //for the last element
-            if (i == csvCourseList.size() - 1) {
+            if (i == csvCsvCourseUnitList.size() - 1) {
                 //incase the last element doesnt bvelong to the previous block
-                if (!topic.getSubject().equals(csvCourseList.get(i).getSubject()) ||
-                        !topic.getCatalogNumber().equals(csvCourseList.get(i).getCatalogNumber())) {
-                    topic = new Topic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
-                    topic.addToOffer(csvCourseList.get(i));
+                if (!topic.getSubject().equals(csvCsvCourseUnitList.get(i).getSubject()) ||
+                        !topic.getCatalogNumber().equals(csvCsvCourseUnitList.get(i).getCatalogNumber())) {
+                    topic = new Topic(csvCsvCourseUnitList.get(i).getSubject(), csvCsvCourseUnitList.get(i).getCatalogNumber());
+                    topic.addToOffer(csvCsvCourseUnitList.get(i));
                     topicList.add(topic);
                     return;
                 }
                 //else manually add last element to the latest block, and add topic to the list manually
-                topic.addToOffer(csvCourseList.get(i));
+                topic.addToOffer(csvCsvCourseUnitList.get(i));
                 topicList.add(topic);
                 return;
             }
-            if (topic.addToOffer(csvCourseList.get(i)))
+            if (topic.addToOffer(csvCsvCourseUnitList.get(i)))
                 continue;
             else {
                 if (i > 0)
                     topicList.add(topic);
-                topic = new Topic(csvCourseList.get(i).getSubject(), csvCourseList.get(i).getCatalogNumber());
-                topic.addToOffer(csvCourseList.get(i));
+                topic = new Topic(csvCsvCourseUnitList.get(i).getSubject(), csvCsvCourseUnitList.get(i).getCatalogNumber());
+                topic.addToOffer(csvCsvCourseUnitList.get(i));
             }
         }
     }
@@ -67,7 +69,7 @@ public class TopicCollection implements Comparator<Course> {
     }
 
     @Override
-    public int compare(Course o1, Course o2) {
+    public int compare(csvCourseUnit o1, csvCourseUnit o2) {
 
         int value1 = o1.getSubject().compareTo(o2.getSubject());
         if (value1 == 0) {
@@ -90,12 +92,12 @@ public class TopicCollection implements Comparator<Course> {
     }
 
 
-    public List<Course> getCsvCourseList() {
-        return csvCourseList;
+    public List<csvCourseUnit> getCsvCsvCourseUnitList() {
+        return csvCsvCourseUnitList;
     }
 
-    public void setCsvCourseList(List<Course> csvCourseList) {
-        instance.csvCourseList = csvCourseList;
+    public void setCsvCsvCourseUnitList(List<csvCourseUnit> csvCsvCourseUnitList) {
+        instance.csvCsvCourseUnitList = csvCsvCourseUnitList;
     }
 
     public List<Topic> getTopicList() {
