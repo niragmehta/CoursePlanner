@@ -32,9 +32,9 @@
 
             <h2><span v-if="selectedDept">{{selectedDept.name}} </span>Courses</h2>
             <ul id="courses">
-                <li v-for="csvCourseUnit in courses">
-                    <a href="#" v-on:click='selectCourse(csvCourseUnit)'>
-                        {{csvCourseUnit.catalogNumber}}
+                <li v-for="course in courses">
+                    <a href="#" v-on:click='selectCourse(course)'>
+                        {{course.catalogNumber}}
                     </a>
                 </li>
 
@@ -65,7 +65,7 @@
         <div id="contents">
             <div v-if="!selectedCourse">
                 <h2>Course Offerings</h2>
-                <p>Please select a department and then a csvCourseUnit from on the left.</p>
+                <p>Please select a department and then a course from on the left.</p>
             </div>
 
             <div v-if="selectedCourse">
@@ -77,13 +77,13 @@
                         <td>Instructor(s)</td>
                         <td>Campus</td>
                     </tr>
-                    <tr v-for="courseByCampus in courseOfferings"
-                        v-on:click='selectOffering(courseByCampus)'
+                    <tr v-for="offering in courseOfferings"
+                        v-on:click='selectOffering(offering)'
                         class="offerings"
                     >
-                        <td>({{courseByCampus.semesterCode}}) {{courseByCampus.term}} {{courseByCampus.year}}</td>
-                        <td>with {{courseByCampus.instructors}}</td>
-                        <td>in {{courseByCampus.location}}</td>
+                        <td>({{offering.semesterCode}}) {{offering.term}} {{offering.year}}</td>
+                        <td>with {{offering.instructors}}</td>
+                        <td>in {{offering.location}}</td>
                     </tr>
                 </table>
             </div>

@@ -29,7 +29,7 @@ public class CoursePlannerController {
     @GetMapping("/api/about")
     public Object getAboutMessage() {
         return new Object(){
-            public String appName = "csvCourseUnit Planner";
+            public String appName = "Course Planner";
             public String authorName = "Nirag and Warren";
         };
     }
