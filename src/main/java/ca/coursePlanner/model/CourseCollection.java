@@ -34,7 +34,7 @@ public class CourseCollection {
         {
             if(name.equals(topicList.get(i).getSubject()))
             {
-                courseTemp.setId(atomicInteger.incrementAndGet());
+                courseTemp.setCourseId(atomicInteger.incrementAndGet());
                 courseTemp.setCatalogNumber(topicList.get(i).getCatalogNumber());
                 courseList.add(courseTemp);
                 courseTemp=new Course();
@@ -49,7 +49,7 @@ public class CourseCollection {
         Course course=new Course();
         for(int i=0;i<courseList.size();i++)
         {
-            if(courseId==courseList.get(i).getId())
+            if(courseId==courseList.get(i).getCourseId())
             {
                 course=courseList.get(i);
                 break;

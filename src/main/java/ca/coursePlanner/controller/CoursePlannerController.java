@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -47,11 +48,18 @@ public class CoursePlannerController {
     }
 
     @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings")
-    public List<Offering> getOfferings(@PathVariable("deptIs") int deptId, @PathVariable("courseId") int courseId){
+    public List<Offering> getOfferings(@PathVariable("deptId") int deptId, @PathVariable("courseId") int courseId){
 
         CourseCollection.populateCourseCollection(deptId);
 
         OfferingCollection.populateList(deptId,courseId);
+
+//        Offering offering1=new Offering(1,"Burnaby","brian",2018,1977,"Fall");
+//        Offering offering2=new Offering(2,"Surrey","Angela",8990,3220,"Summer");
+//        List<Offering> offeringList=new ArrayList<>();
+//        offeringList.add(offering1);
+//        offeringList.add(offering2);
+//        return offeringList;
 
         return OfferingCollection.getOfferingList();
 

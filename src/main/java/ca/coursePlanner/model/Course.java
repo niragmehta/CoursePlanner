@@ -2,22 +2,22 @@ package ca.coursePlanner.model;
 
 public class Course {
 
-    private int id;
+    private int courseId;
     private String catalogNumber;
 
     public Course(){}
 
     public Course(int id, String catalogNumber) {
-        this.id = id;
+        this.courseId = id;
         this.catalogNumber = catalogNumber;
     }
 
-    public int getId() {
-        return id;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public String getCatalogNumber() {

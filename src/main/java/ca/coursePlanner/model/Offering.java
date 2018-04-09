@@ -1,5 +1,7 @@
 package ca.coursePlanner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Offering {
 
     private int courseOfferingId;
@@ -8,6 +10,8 @@ public class Offering {
     private int year;
     private int semesterCode;
     private String term;
+
+
     private Course course;
 
     Offering(){}
@@ -68,6 +72,7 @@ public class Offering {
     public void setTerm(String term) {
         this.term = term;
     }
+
 
     public Course getCourse() {
         return course;
