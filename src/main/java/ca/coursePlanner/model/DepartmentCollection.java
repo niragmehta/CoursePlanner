@@ -42,6 +42,20 @@ public class DepartmentCollection {
 
     }
 
+    public static Department getDepartmentById(int id)
+    {
+        Department department=new Department();
+        for(int i=0;i<departmentList.size();i++)
+        {
+            if(id==departmentList.get(i).getDeptId())
+            {
+                department=departmentList.get(i);
+                break;
+            }
+        }
+        return department;
+    }
+
     public static List<Department> getDepartmentList() {
         return departmentList;
     }

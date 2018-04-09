@@ -43,6 +43,20 @@ public class CourseCollection {
 
     }
 
+    public static Course getCourseById(int courseId)
+    {
+        Course course=new Course();
+        for(int i=0;i<courseList.size();i++)
+        {
+            if(courseId==courseList.get(i).getId())
+            {
+                course=courseList.get(i);
+                break;
+            }
+        }
+        return course;
+    }
+
     public static List<Course> getCourseList() {
         return courseList;
     }

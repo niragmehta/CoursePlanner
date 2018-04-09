@@ -24,7 +24,7 @@ public class OfferingCollection {
 
             if(deptName.equals(topicList.get(i).getSubject()) && catalogNumber.equals(topicList.get(i).getCatalogNumber()))
             {
-                List<OfferingLocationCampus> list=topicList.get(i).getCoursesOfferList();
+                List<CourseByCampus> list=topicList.get(i).getCoursesOfferList();
 
                 Offering offering=new Offering();
                 for(int j=0;j<list.size();j++)

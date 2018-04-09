@@ -49,7 +49,11 @@ public class CoursePlannerController {
     @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings")
     public List<Offering> getOfferings(@PathVariable("deptIs") int deptId, @PathVariable("courseId") int courseId){
 
+        CourseCollection.populateCourseCollection(deptId);
 
+        OfferingCollection.populateList(deptId,courseId);
+
+        return OfferingCollection.getOfferingList();
 
     }
 
