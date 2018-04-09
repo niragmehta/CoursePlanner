@@ -34,11 +34,13 @@ public class OfferingCollection {
                     int year=getYear(semester);
                     String term=getTerm(semester);
 
+                    list.get(j).PopulateEnrollmentTotal();
 
                     StringBuilder instructors=new StringBuilder();
                     List<String> instructorsList=list.get(j).getInstructors();
-                    for(int t=0;t<instructorsList.size();t++)
+                    for(int t=0;t<instructorsList.size();t++) {
                         instructors.append(instructorsList.get(t));
+                    }
 
 
                     offering.setCourseOfferingId(atomicInteger.incrementAndGet());
