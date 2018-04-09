@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feb6113d-b98e-4ed7-9079-7b513d18a521" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/Department.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/DepartmentCollection.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/Application.java" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/Application.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/controller/CoursePlannerController.java" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/controller/CoursePlannerController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/CourseTopic.java" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/Topic.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/Facade.java" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/Facade.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/TopicCollection.java" afterPath="$PROJECT_DIR$/src/main/java/ca/coursePlanner/model/TopicCollection.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -175,6 +168,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GradleLocalSettings">
@@ -863,7 +861,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523135118585</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="starting frmo scratch.">
+      <created>1523239217827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523239217827</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -947,7 +952,8 @@
     <MESSAGE value="Implemented TxtWriter helper class" />
     <MESSAGE value="Refactor class name and improved syntax format&#10; &#10; - Refactor class name CourseOffer to Offering&#10; - Refactor class name CourseCollection to TopicCollection" />
     <MESSAGE value="Refactor class name, improved csv parsing and improved syntax format&#10; &#10; - Added change of &quot;&lt;null&gt;&quot; as &quot;&quot; in CSVReader read()&#10; - Refactor class name CourseOffer to Offering&#10; - Refactor class name CourseCollection to TopicCollection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor class name, improved csv parsing and improved syntax format&#10; &#10; - Added change of &quot;&lt;null&gt;&quot; as &quot;&quot; in CSVReader read()&#10; - Refactor class name CourseOffer to Offering&#10; - Refactor class name CourseCollection to TopicCollection" />
+    <MESSAGE value="starting frmo scratch." />
+    <option name="LAST_COMMIT_MESSAGE" value="starting frmo scratch." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
