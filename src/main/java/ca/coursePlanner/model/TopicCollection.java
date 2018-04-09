@@ -37,9 +37,9 @@ public class TopicCollection implements Comparator<csvCourseUnit> {
             //for the last element
             if (i == csvCsvCourseUnitList.size() - 1) {
                 //incase the last element doesnt bvelong to the previous block
-                if (!topic.getSubject().equals(csvCsvCourseUnitList.get(i).getSubject()) ||
+                if (!topic.getSubject().equals(csvCsvCourseUnitList.get(i).getSubjectName()) ||
                         !topic.getCatalogNumber().equals(csvCsvCourseUnitList.get(i).getCatalogNumber())) {
-                    topic = new Topic(csvCsvCourseUnitList.get(i).getSubject(), csvCsvCourseUnitList.get(i).getCatalogNumber());
+                    topic = new Topic(csvCsvCourseUnitList.get(i).getSubjectName(), csvCsvCourseUnitList.get(i).getCatalogNumber());
                     topic.addToOffer(csvCsvCourseUnitList.get(i));
                     topicList.add(topic);
                     return;
@@ -54,7 +54,7 @@ public class TopicCollection implements Comparator<csvCourseUnit> {
             else {
                 if (i > 0)
                     topicList.add(topic);
-                topic = new Topic(csvCsvCourseUnitList.get(i).getSubject(), csvCsvCourseUnitList.get(i).getCatalogNumber());
+                topic = new Topic(csvCsvCourseUnitList.get(i).getSubjectName(), csvCsvCourseUnitList.get(i).getCatalogNumber());
                 topic.addToOffer(csvCsvCourseUnitList.get(i));
             }
         }
@@ -71,7 +71,7 @@ public class TopicCollection implements Comparator<csvCourseUnit> {
     @Override
     public int compare(csvCourseUnit o1, csvCourseUnit o2) {
 
-        int value1 = o1.getSubject().compareTo(o2.getSubject());
+        int value1 = o1.getSubjectName().compareTo(o2.getSubjectName());
         if (value1 == 0) {
             int value2 = o1.getCatalogNumber().compareTo(o2.getCatalogNumber());
             if (value2 == 0) {

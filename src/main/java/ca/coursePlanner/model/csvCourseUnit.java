@@ -3,25 +3,25 @@ package ca.coursePlanner.model;
 public class csvCourseUnit {
 
     private int semester;
-    private String subject;
+    private String subjectName;
     private String catalogNumber;
     private String location;
-    private int enrolmentCapacity;
-    private int enrolmentTotal;
+    private int enrollmentCap;
+    private int enrollmentTotal;
     private String instructor;
-    private String componentCode;
+    private String component;
 
     public csvCourseUnit(){}
 
-    public csvCourseUnit(int semester, String subject, String catalogNumber, String location, int enrolmentCapacity, int enrolmentTotal, String instructor, String componentCode) {
+    public csvCourseUnit(int semester, String subjectName, String catalogNumber, String location, int enrollmentCap, int enrollmentTotal, String instructor, String component) {
         this.semester = semester;
-        this.subject = subject;
+        this.subjectName = subjectName;
         this.catalogNumber = catalogNumber;
         this.location = location;
-        this.enrolmentCapacity = enrolmentCapacity;
-        this.enrolmentTotal = enrolmentTotal;
+        this.enrollmentCap = enrollmentCap;
+        this.enrollmentTotal = enrollmentTotal;
         this.instructor = instructor;
-        this.componentCode = componentCode;
+        this.component = component;
     }
 
     public int getSemester() {
@@ -32,12 +32,12 @@ public class csvCourseUnit {
         this.semester = semester;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public String getCatalogNumber() {
@@ -56,20 +56,20 @@ public class csvCourseUnit {
         this.location = location;
     }
 
-    public int getEnrolmentCapacity() {
-        return enrolmentCapacity;
+    public int getEnrollmentCap() {
+        return enrollmentCap;
     }
 
-    public void setEnrolmentCapacity(int enrolmentCapacity) {
-        this.enrolmentCapacity = enrolmentCapacity;
+    public void setEnrollmentCap(int enrollmentCap) {
+        this.enrollmentCap = enrollmentCap;
     }
 
-    public int getEnrolmentTotal() {
-        return enrolmentTotal;
+    public int getEnrollmentTotal() {
+        return enrollmentTotal;
     }
 
-    public void setEnrolmentTotal(int enrolmentTotal) {
-        this.enrolmentTotal = enrolmentTotal;
+    public void setEnrollmentTotal(int enrollmentTotal) {
+        this.enrollmentTotal = enrollmentTotal;
     }
 
     public String getInstructor() {
@@ -80,19 +80,19 @@ public class csvCourseUnit {
         this.instructor = instructor;
     }
 
-    public String getComponentCode() {
-        return componentCode;
+    public String getComponent() {
+        return component;
     }
 
-    public void setComponentCode(String componentCode) {
-        this.componentCode = componentCode;
+    public void setComponent(String component) {
+        this.component = component;
     }
 
 
     @Override
     public String toString() {
 
-        return " " + semester+" , "+subject+" , "+catalogNumber+" , "+location+" , "+enrolmentCapacity+
-                "  , " +enrolmentTotal+" , "+instructor+" ,"+componentCode;
+        return " " + semester+" , "+ subjectName +" , "+catalogNumber+" , "+location+" , "+ enrollmentCap +
+                "  , " + enrollmentTotal +" , "+instructor+" ,"+ component;
     }
 }

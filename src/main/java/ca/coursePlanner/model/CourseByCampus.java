@@ -28,7 +28,7 @@ public class CourseByCampus {
 
     public boolean addCourse(csvCourseUnit csvCourseUnit){
         if(csvCourseUnit.getLocation().equals(this.location) && csvCourseUnit.getSemester() == this.semester
-                && csvCourseUnit.getSubject().equals(this.subject) && csvCourseUnit.getCatalogNumber().equals(this.catalogNumber))
+                && csvCourseUnit.getSubjectName().equals(this.subject) && csvCourseUnit.getCatalogNumber().equals(this.catalogNumber))
         {
             csvCourseUnitList.add(csvCourseUnit);
             return true;
@@ -73,20 +73,20 @@ public class CourseByCampus {
                 instructors.add(csvCourseUnitList.get(i).getInstructor());
 
 
-            if(componentType.contains(csvCourseUnitList.get(i).getComponentCode()))
+            if(componentType.contains(csvCourseUnitList.get(i).getComponent()))
             {
-                int index=componentType.indexOf(csvCourseUnitList.get(i).getComponentCode());
+                int index=componentType.indexOf(csvCourseUnitList.get(i).getComponent());
 
-                int temp=componentCapacity.get(index)+ csvCourseUnitList.get(i).getEnrolmentCapacity();
+                int temp=componentCapacity.get(index)+ csvCourseUnitList.get(i).getEnrollmentCap();
                 componentCapacity.set(index,temp);
-                temp=componentTotal.get(index)+ csvCourseUnitList.get(i).getEnrolmentTotal();
+                temp=componentTotal.get(index)+ csvCourseUnitList.get(i).getEnrollmentTotal();
                 componentTotal.set(index,temp);
             }
             else
             {
-                componentType.add(csvCourseUnitList.get(i).getComponentCode());
-                componentCapacity.add(csvCourseUnitList.get(i).getEnrolmentCapacity());
-                componentTotal.add(csvCourseUnitList.get(i).getEnrolmentTotal());
+                componentType.add(csvCourseUnitList.get(i).getComponent());
+                componentCapacity.add(csvCourseUnitList.get(i).getEnrollmentCap());
+                componentTotal.add(csvCourseUnitList.get(i).getEnrollmentTotal());
             }
         }
     }

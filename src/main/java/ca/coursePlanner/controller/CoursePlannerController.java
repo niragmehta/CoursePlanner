@@ -2,13 +2,11 @@ package ca.coursePlanner.controller;
 
 
 import ca.coursePlanner.model.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -79,6 +77,26 @@ public class CoursePlannerController {
         return SectionCollection.getSectionList();
     }
 
+    @PostMapping("/api/addoffering")
+    public String addOffering(@RequestBody csvCourseUnit line) throws IOException {
+
+        FileWriter fw=new FileWriter("data/course_data_2018.csv",true);
+
+        fw.append("\n"+Integer.toString(line.getSemester())+","+line.getSubjectName()+","+line.getCatalogNumber()+","+
+                line.getLocation()+","+","+ Integer.toString(line.getEnrollmentCap())+","+
+                Integer.toString(line.getEnrollmentTotal())+","+line.getInstructor()+","+line.getComponent());
+
+        fw.close();
+
+        Facade.writeDump();
+        DepartmentCollection.populateDepartmentList();
+
+        String info="{\n";
+
+
+        return info;
+
+    }
 
 
 

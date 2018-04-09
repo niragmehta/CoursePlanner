@@ -32,8 +32,8 @@ public class Topic {
                 return true;
         }
 
-        if (csvCourseUnit.getSubject().equals(subject) && csvCourseUnit.getCatalogNumber().equals(catalogNumber)) {
-            CourseByCampus courseByCampus = new CourseByCampus(csvCourseUnit.getLocation(), csvCourseUnit.getSemester(), csvCourseUnit.getSubject(), csvCourseUnit.getCatalogNumber());
+        if (csvCourseUnit.getSubjectName().equals(subject) && csvCourseUnit.getCatalogNumber().equals(catalogNumber)) {
+            CourseByCampus courseByCampus = new CourseByCampus(csvCourseUnit.getLocation(), csvCourseUnit.getSemester(), csvCourseUnit.getSubjectName(), csvCourseUnit.getCatalogNumber());
 
             courseByCampus.addCourse(csvCourseUnit);
             //courseByCampus.getCsvCourseUnitList().add(csvCourseUnit);
