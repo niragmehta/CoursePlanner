@@ -14,6 +14,7 @@ public class CourseByCampus {
     List<String> componentType=new ArrayList<>();
     List<Integer> componentCapacity=new ArrayList<>();
     List<Integer> componentTotal=new ArrayList<>();
+
     List<String> instructors=new ArrayList<>();
 
     TxtWriter txtWriterInstance=TxtWriter.getInstance();
@@ -117,6 +118,30 @@ public class CourseByCampus {
 
     public String getCatalogNumber() {
         return catalogNumber;
+    }
+
+    public List<String> getComponentType() {
+        return componentType;
+    }
+
+    public void setComponentType(List<String> componentType) {
+        this.componentType = componentType;
+    }
+
+    public List<Integer> getComponentCapacity() {
+        return componentCapacity;
+    }
+
+    public void setComponentCapacity(List<Integer> componentCapacity) {
+        this.componentCapacity = componentCapacity;
+    }
+
+    public List<Integer> getComponentTotal() {
+        return componentTotal;
+    }
+
+    public void setComponentTotal(List<Integer> componentTotal) {
+        this.componentTotal = componentTotal;
     }
 
     public List<String> getInstructors() {

@@ -2,6 +2,9 @@ package ca.coursePlanner.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Offering {
 
     private int courseOfferingId;
@@ -10,6 +13,10 @@ public class Offering {
     private int year;
     private int semesterCode;
     private String term;
+
+    List<String> componentType=new ArrayList<>();
+    List<Integer> componentCapacity=new ArrayList<>();
+    List<Integer> componentTotal=new ArrayList<>();
 
 
     private Course course;
@@ -80,5 +87,29 @@ public class Offering {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public List<String> getComponentType() {
+        return componentType;
+    }
+
+    public void setComponentType(List<String> componentType) {
+        this.componentType = componentType;
+    }
+
+    public List<Integer> getComponentCapacity() {
+        return componentCapacity;
+    }
+
+    public void setComponentCapacity(List<Integer> componentCapacity) {
+        this.componentCapacity = componentCapacity;
+    }
+
+    public List<Integer> getComponentTotal() {
+        return componentTotal;
+    }
+
+    public void setComponentTotal(List<Integer> componentTotal) {
+        this.componentTotal = componentTotal;
     }
 }

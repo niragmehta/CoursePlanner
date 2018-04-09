@@ -51,6 +51,11 @@ public class OfferingCollection {
                     offering.setInstructors(instructors.toString());
                     offering.setCourse(course);
 
+                    //addition fields not used by UI, but needed later
+                    offering.setComponentCapacity(list.get(j).getComponentCapacity());
+                    offering.setComponentTotal(list.get(j).getComponentTotal());
+                    offering.setComponentType(list.get(j).getComponentType());
+
                     offeringList.add(offering);
                     offering=new Offering();
                 }
@@ -95,6 +100,19 @@ public class OfferingCollection {
         return term;
 
 
+    }
+
+    public static Offering getOfferingById(int courseOfferingId)
+    {
+        Offering offering=new Offering();
+        for(int i=0;i<offeringList.size();i++)
+        {
+            if(courseOfferingId==offeringList.get(i).getCourseOfferingId())
+            {
+                offering= offeringList.get(i);
+            }
+        }
+        return offering;
     }
 
     public static List<Offering> getOfferingList() {
