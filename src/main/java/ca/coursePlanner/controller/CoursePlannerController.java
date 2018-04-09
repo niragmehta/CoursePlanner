@@ -1,12 +1,15 @@
 package ca.coursePlanner.controller;
 
 
+import ca.coursePlanner.model.Department;
+import ca.coursePlanner.model.DepartmentCollection;
 import ca.coursePlanner.model.Facade;
 import ca.coursePlanner.model.TxtWriter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 @RestController
 public class CoursePlannerController {
@@ -24,6 +27,15 @@ public class CoursePlannerController {
             public String appName = "Course Planner";
             public String authorName = "Nirag and Warren";
         };
+    }
+
+    @GetMapping("/api/departments")
+    public List<Department> getDepartments() throws FileNotFoundException
+    {
+        Facade.writeDump();
+        DepartmentCollection.populateDepartmentList();
+        return DepartmentCollection.getDepartmentList();
+
     }
 
 
