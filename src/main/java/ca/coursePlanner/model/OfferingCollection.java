@@ -15,6 +15,7 @@ public class OfferingCollection {
 
         String deptName=DepartmentCollection.getDepartmentById(deptId).getName();
         String catalogNumber=CourseCollection.getCourseById(courseId).getCatalogNumber();
+        Course course=CourseCollection.getCourseById(courseId);
 
         AtomicInteger atomicInteger=new AtomicInteger();
 
@@ -33,7 +34,7 @@ public class OfferingCollection {
                     int year=getYear(semester);
                     String term=getTerm(semester);
                     String instructors=OfferingLocationCampus.getInstructors();
-                    Course course=CourseCollection.getCourseById(courseId);
+
 
                     offering.setCourseOfferingId(atomicInteger.incrementAndGet());
                     offering.setLocation(list.get(j).getLocation());
@@ -43,11 +44,11 @@ public class OfferingCollection {
                     offering.setInstructors(instructors);
                     offering.setCourse(course);
 
-
                     offeringList.add(offering);
                     offering=new Offering();
                 }
-
+                //we have stored all offerings into the list, now we can exit the loop
+                return;
             }
         }
 

@@ -15,6 +15,7 @@ public class CourseCollection {
 
         String name="";
         List<Department> departmentList=DepartmentCollection.getDepartmentList();
+        
         for(int i=0;i<departmentList.size();i++)
         {
             if(id==departmentList.get(i).getDeptId())
