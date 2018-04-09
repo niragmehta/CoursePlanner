@@ -65,6 +65,19 @@ public class CoursePlannerController {
 
     }
 
+    @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings/{courseOfferingId}")
+    public List<Section> getSection(@PathVariable("deptId") int deptId,
+                              @PathVariable("courseId") int courseId,
+                              @PathVariable("courseOfferingId") int courseOfferingId)
+
+    {
+        CourseCollection.populateCourseCollection(deptId);
+        OfferingCollection.populateList(deptId,courseId);
+
+        SectionCollection.populateSectionCollection(courseOfferingId);
+
+        return SectionCollection.getSectionList();
+    }
 
 
 
