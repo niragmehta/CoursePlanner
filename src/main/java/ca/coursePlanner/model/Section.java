@@ -1,14 +1,11 @@
 package ca.coursePlanner.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Section {
+public class Section{
 
     private String type;
     private int enrollmentTotal;
     private int enrollmentCap;
-
 
     public Section(){}
 
