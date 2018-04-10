@@ -1,11 +1,12 @@
 package ca.coursePlanner.model;
 
+import ca.coursePlanner.model.Watcher.Watcher;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Offering {
+public class Offering{
 
     private int courseOfferingId;
     private String location;
@@ -17,7 +18,6 @@ public class Offering {
     List<String> componentType=new ArrayList<>();
     List<Integer> componentCapacity=new ArrayList<>();
     List<Integer> componentTotal=new ArrayList<>();
-
 
     private Course course;
 
@@ -79,7 +79,6 @@ public class Offering {
     public void setTerm(String term) {
         this.term = term;
     }
-
 
     public Course getCourse() {
         return course;

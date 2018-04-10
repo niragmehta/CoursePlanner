@@ -22,7 +22,6 @@ public class OfferingCollection {
         List<Topic> topicList=TopicCollection.getInstance().getTopicList();
         for(int i=0;i<topicList.size();i++)
         {
-
             if(deptName.equals(topicList.get(i).getSubject()) && catalogNumber.equals(topicList.get(i).getCatalogNumber()))
             {
                 List<CourseByCampus> list=topicList.get(i).getCoursesOfferList();
@@ -57,11 +56,15 @@ public class OfferingCollection {
                     offering.setComponentType(list.get(j).getComponentType());
 
                     offeringList.add(offering);
+
                     offering=new Offering();
                 }
                 //we have stored all offerings into the list, now we can exit the loop
+
+                course.setOfferingList(offeringList);
                 return;
             }
+
         }
 
     }
