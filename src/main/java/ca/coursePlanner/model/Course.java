@@ -1,9 +1,14 @@
 package ca.coursePlanner.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
 
     private int courseId;
     private String catalogNumber;
+
+
 
     public Course(){}
 
@@ -27,4 +32,6 @@ public class Course {
     public void setCatalogNumber(String catalogNumber) {
         this.catalogNumber = catalogNumber;
     }
+
+
 }

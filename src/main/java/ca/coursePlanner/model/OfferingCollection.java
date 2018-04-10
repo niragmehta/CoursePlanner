@@ -60,6 +60,8 @@ public class OfferingCollection {
                     offering=new Offering();
                 }
                 //we have stored all offerings into the list, now we can exit the loop
+
+
                 return;
             }
         }
