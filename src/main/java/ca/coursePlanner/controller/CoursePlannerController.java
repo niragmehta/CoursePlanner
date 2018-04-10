@@ -58,16 +58,16 @@ public class CoursePlannerController {
 
         return OfferingCollection.getOfferingList();
     }
-    @GetMapping("/api/watchers")
-    public List<Watcher> getWatchers() {
-        List<Watcher> watchers = new ArrayList<>();
-        for (Course course : CourseCollection.getCourseList()) {
-            for (Watcher watcher : course.getObserverList()) {
-                watchers.add(watcher);
-            }
-        }
-        return watchers;
-    }
+//    @GetMapping("/api/watchers")
+//    public List<Watcher> getWatchers() {
+//        List<Watcher> watchers = new ArrayList<>();
+//        for (Course course : CourseCollection.getCourseList()) {
+//            for (Watcher watcher : course.getObserverList()) {
+//                watchers.add(watcher);
+//            }
+//        }
+//        return watchers;
+//    }
 
     @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings/{courseOfferingId}")
     public List<Section> getSection(@PathVariable("deptId") int deptId,

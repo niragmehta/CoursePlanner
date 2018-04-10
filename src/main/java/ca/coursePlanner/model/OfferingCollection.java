@@ -61,7 +61,7 @@ public class OfferingCollection {
                 }
                 //we have stored all offerings into the list, now we can exit the loop
 
-                course.setOfferingList(offeringList);
+                //course.setOfferingList(offeringList);
                 return;
             }
         }
