@@ -57,7 +57,6 @@ public class CoursePlannerController {
         OfferingCollection.populateList(deptId, courseId);
 
         return OfferingCollection.getOfferingList();
-
     }
 
     @GetMapping("/api/watchers")
@@ -85,29 +84,21 @@ public class CoursePlannerController {
     }
 
     @PostMapping("/api/watchers")
-    public Watcher addOneWatcher(@RequestBody Watcher newWatcher) {
-        //int watcherDeptId = newWatcher.getDepartment().getDeptId();
-        int watcherCourseId = newWatcher.getCourse().getCourseId();
+    public Watcher addOneWatcher(@RequestBody IdHolder idHolder) {
+        int courseId = idHolder.getCourseId();
+        int deptId = idHolder.getDeptId();
 
-        //Department targetDepartment = DepartmentCollection.getDepartmentById(watcherDeptId);
-        Course targetCourse = CourseCollection.getCourseById(watcherCourseId);
+        CourseCollection.populateCourseCollection(deptId);
+        OfferingCollection.populateList(deptId, courseId);
 
-//        for(Department department : DepartmentCollection.getDepartmentList()){
-//            if(department.equals(targetDepartment))
-//        }
-        for (Course course : CourseCollection.getCourseList()) {
-            //if (watcherCourseId == targetCourse.getCourseId() && watcherDeptId == targetDepartment.getDeptId())
-            if(watcherCourseId == targetCourse.getCourseId()) {
-                course.registerWatchers(newWatcher);
-                break;
-            }
-        }
-        // Set pledge to have next ID:
-        newWatcher.setId(nextId.incrementAndGet());
+        Department targetDepartment = DepartmentCollection.getDepartmentById(deptId);
+        Course targetCourse = CourseCollection.getCourseById(courseId);
 
-        watchers.add(newWatcher);
-        return newWatcher;
+        Watcher watcher = new Watcher(targetDepartment,targetCourse);
+
+        return watcher;
     }
+
 
     @PostMapping("/api/addoffering")
     public Section addOffering(@RequestBody csvCourseUnit line) throws IOException {

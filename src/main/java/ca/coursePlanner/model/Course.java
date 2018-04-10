@@ -1,6 +1,7 @@
 package ca.coursePlanner.model;
 
 import ca.coursePlanner.model.Watcher.Watcher;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
