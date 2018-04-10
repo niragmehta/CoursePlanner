@@ -26,6 +26,7 @@ public class SectionCollection {
             section=new Section();
 
         }
+        offering.setSectionList(sectionList);
 
     }
 

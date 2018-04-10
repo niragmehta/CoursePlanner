@@ -98,6 +98,17 @@ public class CoursePlannerController {
 
     }
 
+    @GetMapping("/api/stats/students-per-semester")
+    public List<StatData> getStats(@RequestParam int deptId)
+    {
+        CourseCollection.populateCourseCollection(deptId);
+
+        StatDataCollection.populateStatDataList(deptId);
+        List<StatData> statDataList=StatDataCollection.getStatDataList();
+
+        return statDataList;
+
+    }
 
 
 }
