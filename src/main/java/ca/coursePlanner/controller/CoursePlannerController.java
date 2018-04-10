@@ -72,7 +72,7 @@ public class CoursePlannerController {
     }
 
     @PostMapping("/api/addoffering")
-    public String addOffering(@RequestBody csvCourseUnit line) throws IOException {
+    public Section addOffering(@RequestBody csvCourseUnit line) throws IOException {
 
         FileWriter fw = new FileWriter("data/course_data_2018.csv", true);
 
@@ -88,10 +88,10 @@ public class CoursePlannerController {
 
         Facade.writeDump();
         DepartmentCollection.populateDepartmentList();
-
-        String info = "{\n";
-        return info;
     }
+    Section section=new Section(line.getComponent(),line.getEnrollmentTotal(),line.getEnrollmentCap());
+
+        return section;
 
     @GetMapping("/api/watchers")
     public List<Watcher> getWatchers() {

@@ -1,10 +1,5 @@
 package ca.coursePlanner.model;
 
-import ca.coursePlanner.model.Watcher.Watcher;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Section{
 
@@ -12,7 +7,7 @@ public class Section{
     private int enrollmentTotal;
     private int enrollmentCap;
 
-    Section(){}
+    public Section(){}
 
     public Section(String type, int enrollmentTotal, int enrollmentCap) {
         this.type = type;
