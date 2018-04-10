@@ -58,7 +58,6 @@ public class CoursePlannerController {
 
         return OfferingCollection.getOfferingList();
     }
-
     @GetMapping("/api/watchers")
     public List<Watcher> getWatchers() {
         List<Watcher> watchers = new ArrayList<>();
@@ -122,4 +121,18 @@ public class CoursePlannerController {
 
         return section;
     }
+
+    @GetMapping("/api/stats/students-per-semester")
+    public List<StatData> getStats(@RequestParam int deptId)
+    {
+        CourseCollection.populateCourseCollection(deptId);
+
+        StatDataCollection.populateStatDataList(deptId);
+        List<StatData> statDataList=StatDataCollection.getStatDataList();
+
+        return statDataList;
+
+    }
+
+
 }

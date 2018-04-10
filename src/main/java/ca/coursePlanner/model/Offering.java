@@ -15,6 +15,9 @@ public class Offering{
     private int semesterCode;
     private String term;
 
+
+    List<Section> sectionList=new ArrayList<>();
+
     List<String> componentType=new ArrayList<>();
     List<Integer> componentCapacity=new ArrayList<>();
     List<Integer> componentTotal=new ArrayList<>();
@@ -110,5 +113,13 @@ public class Offering{
 
     public void setComponentTotal(List<Integer> componentTotal) {
         this.componentTotal = componentTotal;
+    }
+
+    public List<Section> getSectionList() {
+        return sectionList;
+    }
+
+    public void setSectionList(List<Section> sectionList) {
+        this.sectionList = sectionList;
     }
 }

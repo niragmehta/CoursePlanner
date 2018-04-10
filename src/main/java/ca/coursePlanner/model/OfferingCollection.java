@@ -64,7 +64,6 @@ public class OfferingCollection {
                 course.setOfferingList(offeringList);
                 return;
             }
-
         }
 
     }
