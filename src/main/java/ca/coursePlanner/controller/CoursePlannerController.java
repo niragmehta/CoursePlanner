@@ -4,6 +4,7 @@ package ca.coursePlanner.controller;
 import ca.coursePlanner.model.*;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.Session;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -78,12 +79,12 @@ public class CoursePlannerController {
     }
 
     @PostMapping("/api/addoffering")
-    public String addOffering(@RequestBody csvCourseUnit line) throws IOException {
+    public Section addOffering(@RequestBody csvCourseUnit line) throws IOException {
 
         FileWriter fw=new FileWriter("data/course_data_2018.csv",true);
 
         fw.append("\n"+Integer.toString(line.getSemester())+","+line.getSubjectName()+","+line.getCatalogNumber()+","+
-                line.getLocation()+","+","+ Integer.toString(line.getEnrollmentCap())+","+
+                line.getLocation()+","+Integer.toString(line.getEnrollmentCap())+","+
                 Integer.toString(line.getEnrollmentTotal())+","+line.getInstructor()+","+line.getComponent());
 
         fw.close();
@@ -91,10 +92,9 @@ public class CoursePlannerController {
         Facade.writeDump();
         DepartmentCollection.populateDepartmentList();
 
-        String info="{\n";
+        Section section=new Section(line.getComponent(),line.getEnrollmentTotal(),line.getEnrollmentCap());
 
-
-        return info;
+        return section;
 
     }
 

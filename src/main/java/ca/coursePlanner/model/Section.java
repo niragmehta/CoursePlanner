@@ -10,38 +10,7 @@ public class Section {
     private int enrollmentCap;
 
 
-
-//    public static void populateSection(int courseOfferingId)
-//    {
-//
-//        section=new Section();
-//
-//        Offering offering=OfferingCollection.getOfferingById(courseOfferingId);
-//
-//        int temp=0;
-//        for(int i=0;i<offering.getComponentTotal().size();i++)
-//        {
-//            temp+=offering.getComponentTotal().get(i);
-//        }
-//        section.setEnrollmentTotal(temp);
-//        temp=0;
-//
-//        for(int i=0;i<offering.getComponentCapacity().size();i++)
-//            temp+=offering.getComponentCapacity().get(i);
-//        section.setEnrollmentCap(temp);
-//
-//        StringBuilder stringBuilder=new StringBuilder();
-//        for(int i=0;i<offering.getComponentType().size();i++)
-//        {
-//            stringBuilder.append(offering.getComponentType().get(i)+",");
-//        }
-//
-//        section.setType(stringBuilder.toString());
-//
-//
-//    }
-
-    Section(){}
+    public Section(){}
 
     public Section(String type, int enrollmentTotal, int enrollmentCap) {
         this.type = type;
