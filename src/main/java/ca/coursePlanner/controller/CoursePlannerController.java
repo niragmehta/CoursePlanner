@@ -88,10 +88,11 @@ public class CoursePlannerController {
 
         Facade.writeDump();
         DepartmentCollection.populateDepartmentList();
-    }
-    Section section=new Section(line.getComponent(),line.getEnrollmentTotal(),line.getEnrollmentCap());
+
+        Section section=new Section(line.getComponent(),line.getEnrollmentTotal(),line.getEnrollmentCap());
 
         return section;
+    }
 
     @GetMapping("/api/watchers")
     public List<Watcher> getWatchers() {
