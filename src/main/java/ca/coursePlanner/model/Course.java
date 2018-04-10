@@ -8,7 +8,7 @@ public class Course {
     private int courseId;
     private String catalogNumber;
 
-
+    
 
     public Course(){}
 

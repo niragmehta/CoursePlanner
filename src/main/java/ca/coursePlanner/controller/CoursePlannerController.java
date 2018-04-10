@@ -8,6 +8,7 @@ import javax.websocket.Session;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -101,10 +102,17 @@ public class CoursePlannerController {
     @GetMapping("/api/stats/students-per-semester")
     public List<StatData> getStats(@RequestParam int deptId)
     {
+        DepartmentCollection.populateDepartmentList();
         CourseCollection.populateCourseCollection(deptId);
 
         StatDataCollection.populateStatDataList(deptId);
         List<StatData> statDataList=StatDataCollection.getStatDataList();
+
+//        List<StatData> list=new ArrayList<>();
+//        list.add(new StatData(7,8));
+//        list.add(new StatData(2,8));
+
+        statDataList.add(new StatData(8,9));
 
         return statDataList;
 

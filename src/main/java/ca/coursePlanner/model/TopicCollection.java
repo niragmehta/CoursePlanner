@@ -104,4 +104,6 @@ public class TopicCollection implements Comparator<csvCourseUnit> {
         populateTopicList();
         return topicList;
     }
+
+
 }
