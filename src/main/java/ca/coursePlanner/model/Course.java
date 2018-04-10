@@ -1,7 +1,6 @@
 package ca.coursePlanner.model;
 
 import ca.coursePlanner.model.Watcher.Watcher;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,19 +50,19 @@ public class Course implements Subject{
         this.catalogNumber = catalogNumber;
     }
 
-    public List<Offering> getOfferingList() {
-        return offeringList;
-    }
-
-    public void setOfferingList(List<Offering> offeringList) {
-        this.offeringList = offeringList;
-    }
-
     public List<Watcher> getObserverList() {
         return observerList;
     }
 
     public void setObserverList(List<Watcher> observerList) {
         this.observerList = observerList;
+    }
+
+    public List<Offering> getOfferingList() {
+        return offeringList;
+    }
+
+    public void setOfferingList(List<Offering> offeringList) {
+        this.offeringList = offeringList;
     }
 }

@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CourseCollection {
 
-    public static List<Course> courseList=new ArrayList<>();
+    private static List<Course> courseList=new ArrayList<>();
 
 
     public static void populateCourseCollection(int id)

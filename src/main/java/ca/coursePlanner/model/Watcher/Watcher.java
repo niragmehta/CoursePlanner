@@ -2,17 +2,24 @@ package ca.coursePlanner.model.Watcher;
 
 import ca.coursePlanner.model.Course;
 import ca.coursePlanner.model.Department;
-import ca.coursePlanner.model.Offering;
+import ca.coursePlanner.model.Section;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import ca.coursePlanner.model.Offering;
+
+import java.util.Date;
 
 public class Watcher implements CourseWatcher{
     int id;
     Department department;
     Course course;
     List<String> events = new ArrayList<>();
+    List<Section> components = new ArrayList<>();
+
+    public Watcher(Course course) {
+        this.course = course;
+    }
 
     public Watcher() {
     }
@@ -25,20 +32,11 @@ public class Watcher implements CourseWatcher{
 
     @Override
     public void update() {
-        for(Offering offering : course.getOfferingList()){
-            events.add(makeEvent(offering));
-        }
+        events.add(makeEvent(course));
     }
 
-    private String makeEvent(Offering offering ) {
-        //Sun Mar 25 21:41:35 PDT 2018: Added section LEC with enrollment (89 / 90)
-        //to offering Spring 2019
-        String event = "";
-        Date date = new Date();
-
-//        String type = offering.getComponentType();
-
-        //String event =  date.toString() + " Added section " + [type] with enrollment ([total]/[cap]) to offering [term] [year]" ;
+    private String makeEvent(Course course) {
+        String event =  "";
 
         return event;
     }
@@ -73,5 +71,13 @@ public class Watcher implements CourseWatcher{
 
     public void setEvents(List<String> events) {
         this.events = events;
+    }
+
+    public List<Section> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<Section> components) {
+        this.components = components;
     }
 }

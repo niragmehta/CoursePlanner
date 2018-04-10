@@ -6,6 +6,7 @@ import ca.coursePlanner.model.Watcher.Watcher;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,16 +60,53 @@ public class CoursePlannerController {
 
     }
 
+    @GetMapping("/api/watchers")
+    public List<Watcher> getWatchers() {
+        List<Watcher> watchers = new ArrayList<>();
+        for (Course course : CourseCollection.getCourseList()) {
+            for (Watcher watcher : course.getObserverList()) {
+                watchers.add(watcher);
+            }
+        }
+        return watchers;
+    }
+
     @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings/{courseOfferingId}")
     public List<Section> getSection(@PathVariable("deptId") int deptId,
-                                    @PathVariable("courseId") int courseId,
-                                    @PathVariable("courseOfferingId") int courseOfferingId) {
+                              @PathVariable("courseId") int courseId,
+                              @PathVariable("courseOfferingId") int courseOfferingId)
+    {
         CourseCollection.populateCourseCollection(deptId);
-        OfferingCollection.populateList(deptId, courseId);
+        OfferingCollection.populateList(deptId,courseId);
 
         SectionCollection.populateSectionCollection(courseOfferingId);
 
         return SectionCollection.getSectionList();
+    }
+
+    @PostMapping("/api/watchers")
+    public Watcher addOneWatcher(@RequestBody Watcher newWatcher) {
+        //int watcherDeptId = newWatcher.getDepartment().getDeptId();
+        int watcherCourseId = newWatcher.getCourse().getCourseId();
+
+        //Department targetDepartment = DepartmentCollection.getDepartmentById(watcherDeptId);
+        Course targetCourse = CourseCollection.getCourseById(watcherCourseId);
+
+//        for(Department department : DepartmentCollection.getDepartmentList()){
+//            if(department.equals(targetDepartment))
+//        }
+        for (Course course : CourseCollection.getCourseList()) {
+            //if (watcherCourseId == targetCourse.getCourseId() && watcherDeptId == targetDepartment.getDeptId())
+            if(watcherCourseId == targetCourse.getCourseId()) {
+                course.registerWatchers(newWatcher);
+                break;
+            }
+        }
+        // Set pledge to have next ID:
+        newWatcher.setId(nextId.incrementAndGet());
+
+        watchers.add(newWatcher);
+        return newWatcher;
     }
 
     @PostMapping("/api/addoffering")
@@ -93,43 +131,4 @@ public class CoursePlannerController {
 
         return section;
     }
-
-    @GetMapping("/api/watchers")
-    public List<Watcher> getWatchers() {
-        List<Watcher> watchers = new ArrayList<>();
-        for (Course course : CourseCollection.getCourseList()) {
-            for (Watcher watcher : course.getObserverList()) {
-                watchers.add(watcher);
-            }
-        }
-        return watchers;
-    }
-
-    @PostMapping("/api/watchers")
-    public Watcher addOneWatcher(@RequestBody IdHolder idHolder) {
-        int courseId = idHolder.getCourseId();
-        int deptId = idHolder.getDeptId();
-
-        CourseCollection.populateCourseCollection(deptId);
-        OfferingCollection.populateList(deptId, courseId);
-
-        Department targetDepartment = DepartmentCollection.getDepartmentById(deptId);
-        Course targetCourse = CourseCollection.getCourseById(courseId);
-
-        Watcher watcher = new Watcher(targetDepartment,targetCourse);
-
-        return watcher;
-    }
-
-    @GetMapping("/api/watchers/{id}")
-    public Watcher getWatcherById(@PathVariable("id") int watcherId){
-        Watcher targetWatcher = new Watcher();
-
-        for(Watcher watcher : watchers){
-            if(watcher.getId() == watcherId)
-                targetWatcher = watcher;
-        }
-        return targetWatcher;
-    }
-
 }
